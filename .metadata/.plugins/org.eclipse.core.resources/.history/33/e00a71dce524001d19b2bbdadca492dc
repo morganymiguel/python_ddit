@@ -1,0 +1,11 @@
+class Animal():
+    flagMove = True
+    
+    def die():
+        flagMove = False
+        print(flagMove)
+    
+
+
+a = Animal()
+a.die()

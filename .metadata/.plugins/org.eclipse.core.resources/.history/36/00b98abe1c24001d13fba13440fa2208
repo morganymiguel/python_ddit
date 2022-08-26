@@ -1,0 +1,6 @@
+import random
+arr = []
+
+rnd = (random.random()*45+1)-1
+
+print(int(rnd))

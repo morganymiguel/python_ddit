@@ -1,0 +1,17 @@
+import random
+
+arr4 = [1,2,3,4]
+arr=[]
+print(arr)
+
+a = arr4.pop(0)
+print("a",a)
+print(arr4)
+
+arr2 = list(range(1, 45+1))
+arr3 = []
+rnd = int(random.random()*45+1)
+while True:
+    arr3.append(arr2.pop(rnd))
+    if(len(arr3)>= 7):
+        break

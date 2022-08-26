@@ -1,0 +1,11 @@
+import random
+
+arr4 = [1,2,3,4]
+arr=[]
+print(arr)
+
+a = arr4.pop(0)
+print("a",a)
+print(arr)
+
+arr

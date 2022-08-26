@@ -1,0 +1,5 @@
+from operator import indexOf
+arr =['이순신','홍길동','전우치']
+
+for i in arr:
+    print(indexOf(i)+"방 "+i)

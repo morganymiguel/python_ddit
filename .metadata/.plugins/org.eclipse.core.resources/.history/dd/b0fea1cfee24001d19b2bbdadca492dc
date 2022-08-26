@@ -1,0 +1,2 @@
+class LeeJY:
+    def __init__(self):

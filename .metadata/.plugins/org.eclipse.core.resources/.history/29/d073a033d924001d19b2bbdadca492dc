@@ -1,0 +1,5 @@
+def showDan(dan):
+    return print(dan)
+    
+
+showDan(6)

@@ -1,0 +1,9 @@
+import random
+arr = [1,2,3,4,5,6]
+
+
+for i in len(arr):
+    rnd = (random.random()*45+1)-1
+    arr.inserrt(len(arr), rnd)
+
+print(arr)

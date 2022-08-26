@@ -1,0 +1,10 @@
+
+
+if True : 
+    print("참")
+print("참")
+
+
+if False:
+    print("바보")
+print("바보")

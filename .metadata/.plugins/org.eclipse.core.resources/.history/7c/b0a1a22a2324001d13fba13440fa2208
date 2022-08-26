@@ -1,0 +1,13 @@
+import random
+
+arr = list(range(1,45+1))
+arr2 =[]
+cnt = 0
+while True:
+    rnd = int(random.random()*45)
+    if arr[rnd] != -99:
+        arr2[cnt]=arr[rnd]
+        arr[rnd] = -99
+        cnt += 1
+    
+    

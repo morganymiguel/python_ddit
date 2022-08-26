@@ -1,0 +1,8 @@
+import random
+arr = []
+
+
+for i in len(7):
+    rnd = (random.random()*45+1)-1
+    
+    print(int(rnd))

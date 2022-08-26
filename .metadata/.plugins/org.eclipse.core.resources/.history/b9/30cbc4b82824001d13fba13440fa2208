@@ -1,0 +1,14 @@
+#홀/짝을 고르시오. 홀/짝
+import random
+
+arr=["홀", "짝"]
+
+myturn = input("홀/짝을 고르시오>> ")
+rnd = int(random.random()*2)
+com = arr[rnd]
+print("나: {}, 컴: {}".format(myturn,com))
+if(com == myturn):
+    print("결과: 승리")
+if(com !=myturn):
+    print("결과: 패배")
+

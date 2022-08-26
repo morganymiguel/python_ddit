@@ -1,0 +1,8 @@
+import random
+arr = []
+
+for i in range(0, 6):
+    rnd = int((random.random()*45+1)-1)
+
+
+print(arr)

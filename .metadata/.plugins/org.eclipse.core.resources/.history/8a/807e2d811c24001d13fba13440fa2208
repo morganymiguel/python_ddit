@@ -1,0 +1,6 @@
+import random
+arr = []
+
+rnd = random.random()
+
+print(rnd)

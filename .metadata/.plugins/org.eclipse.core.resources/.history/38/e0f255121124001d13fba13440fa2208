@@ -1,0 +1,13 @@
+arr = range(5,44)#cast
+for i in arr:
+   print(i) 
+
+print(list(arr))
+
+arr = range(1, 11)
+print(sum(arr))
+
+sum =0
+for i in arr:
+    sum += i
+    print(sum)
