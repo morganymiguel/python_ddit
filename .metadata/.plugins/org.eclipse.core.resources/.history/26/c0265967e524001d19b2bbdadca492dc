@@ -1,9 +1,0 @@
-class Animal:
-    flagMove = True
-    
-    def death():
-        flagMove = False
-    
-
-a = Animal()
-print(a.death()) 

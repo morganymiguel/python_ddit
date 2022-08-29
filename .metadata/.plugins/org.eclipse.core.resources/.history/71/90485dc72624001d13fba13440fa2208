@@ -1,7 +1,0 @@
-#홀/짝을 고르시오. 홀/짝
-
-arr=["홀", "짝"]
-
-myturn = input("홀/짝을 고르시오>> ")
-rnd = int(random.random()*2)
-com = 

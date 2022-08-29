@@ -1,5 +1,0 @@
-def addmindivmul(a,b):
-    return a+b, a-b, a/b, a*b
-
-sum, min,div,mul = addmindivmul(5,6)
-print(sum,min,div,mul)

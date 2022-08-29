@@ -1,7 +1,0 @@
-def getRandom1_9():
-    return 6
-
-
-su = getRandom1_9()
-
-print("su",su)

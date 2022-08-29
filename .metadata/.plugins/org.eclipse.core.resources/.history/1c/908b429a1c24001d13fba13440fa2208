@@ -1,6 +1,0 @@
-import random
-arr = []
-
-rnd = (random.random()*45)-1
-
-print(rnd)

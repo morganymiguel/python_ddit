@@ -1,3 +1,0 @@
-import random
-
-arr = list(range(1,45+1))

@@ -1,7 +1,0 @@
-from operator import indexOf
-arr =['이순신','홍길동','전우치']
-
-cnt = 0
-for i in arr:
-    cnt++
-    print(cnt+"방"+i)

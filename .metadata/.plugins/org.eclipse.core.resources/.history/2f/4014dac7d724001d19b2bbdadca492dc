@@ -1,6 +1,0 @@
-
-sum = add(5,6)
-
-print("sum", sum)
-def add(a, b):
-    return a+b

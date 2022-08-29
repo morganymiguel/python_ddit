@@ -1,6 +1,0 @@
-class Animal:
-    flagMove = True
-    
-    def die():
-        flagMove = False
-        

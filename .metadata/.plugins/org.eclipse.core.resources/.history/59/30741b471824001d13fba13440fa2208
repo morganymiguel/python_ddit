@@ -1,5 +1,0 @@
-a = int(input("출력할 단수를 입력하시오>> "))
-
-arr = range(1,10)
-for i in arr:
-    print("{}*{}={}".format(a,i,(a*int(i)))  
