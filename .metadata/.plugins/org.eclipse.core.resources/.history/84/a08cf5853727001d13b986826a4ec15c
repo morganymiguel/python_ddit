@@ -1,0 +1,9 @@
+package day04;
+
+public class SwingTest {
+
+	public static void main(String[] args) {
+		JFrame jfrm = new JFrame();
+	}
+
+}

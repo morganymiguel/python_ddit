@@ -8,7 +8,12 @@ class Acamedy:
     
     def __del__(self):
         print("destoryer")
+    
+    def __str__(self):
+        return "self.cnt_student:"+str(self.cnt_student)
 
 
-
-Acamedy()
+print()
+a = Acamedy()
+a.openClass()
+print(a)
