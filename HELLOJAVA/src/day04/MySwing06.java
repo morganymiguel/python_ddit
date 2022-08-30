@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Arrays;
+import java.awt.ComponentOrientation;
 
 public class MySwing06 extends JFrame {
 
@@ -63,6 +64,7 @@ public class MySwing06 extends JFrame {
 		contentPane.setLayout(null);
 		
 		tf = new JTextField();
+		tf.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
 		tf.setBounds(12, 23, 177, 21);
 		contentPane.add(tf);
 		tf.setColumns(10);
@@ -193,14 +195,7 @@ public class MySwing06 extends JFrame {
 		contentPane.add(btn9);
 		
 		btn0 = new JButton("0");
-		btn0.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				int num = Integer.parseInt(btn0.getText());
-				
-				myClick(num);
-			}
-		});
+		btn0.addMouseListener(new MouseAdapter() {public void mouseClicked(MouseEvent e) {myclick(e);}});
 		btn0.setBounds(12, 201, 47, 23);
 		contentPane.add(btn0);
 		
@@ -214,6 +209,7 @@ public class MySwing06 extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				myClick();
+				
 			}
 		});
 		btn_call.setBounds(81, 201, 108, 23);
@@ -236,7 +232,14 @@ public class MySwing06 extends JFrame {
 
 	public void myClick() {
 		
-		JOptionPane.showMessageDialog(null, txt);
+		JOptionPane.showMessageDialog(null, "Calling\n"+txt);
+		//null, this 모두 가능.
+	}
+	public void myclick(MouseEvent e) {
+		JButton btn = (JButton) e.getSource();
+		String str_old = tf.getText();
+		String str_new = btn.getText();
+		tf.setText(str_old + str_new);
 		
 	}
 

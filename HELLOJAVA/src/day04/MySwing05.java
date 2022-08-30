@@ -100,5 +100,26 @@ public class MySwing05 extends JFrame {
 			tf3.setText("패배");
 		}
 	}
-
+	public void myclick() {
+		String mine = tf1.getText();
+		String com = "";
+		String result = "";
+		
+		double rnd = Math.random();
+		
+		if(rnd <0.5) {
+			com = "홀";
+		}else{
+			com ="짝";
+		}
+		if(mine.equals(com)) {
+			result = "승리";
+			
+		}else {
+			result = "패배";
+		}
+		tf2.setText(com);
+		tf3.setText(result);
+		
+	}
 }
