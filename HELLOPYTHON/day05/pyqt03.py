@@ -2,7 +2,7 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
 
-form_class = uic.loadUiType("pyqt01.ui")[0]
+form_class = uic.loadUiType("pyqt03.ui")[0]
 
 class MyWindow(QMainWindow, form_class):
     def __init__(self):
@@ -10,9 +10,18 @@ class MyWindow(QMainWindow, form_class):
         self.setupUi(self)
         self.pb.clicked.connect(self.myclick)
         
+        
     def myclick(self):
         print("click")
-        self.lbl.setText("Good Evening")
+        val1 = self.le1.text()#값을 가져오는 메서드
+        val2 = self.le2.text()
+        result = int(val1) * int(val2)
+        
+        self.le_result.setText(str(result))
+        
+        
+    
+        
 #코드 실행시 GUI 창을 띄우는 부분
 #__name__ == "__main__" : 모듈로 활용되는게 아니라 해당 .py파일에서 직접 실행되는 경우에만 코드 실행
 

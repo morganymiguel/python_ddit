@@ -12,8 +12,9 @@ class Acamedy:
     def __str__(self):
         return "self.cnt_student:"+str(self.cnt_student)
 
-
-print()
-a = Acamedy()
-a.openClass()
-print(a)
+if __name__ == '__main__':
+    print()
+    a = Acamedy()
+    a.openClass()
+    print(a)
+    
