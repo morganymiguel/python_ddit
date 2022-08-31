@@ -18,7 +18,40 @@ class MyWindow(QMainWindow, form_class):
         
     def myclick(self):
         print("click")
+        rnd = random.random()
+        mine = ""
+        com=""
+        result = ""
+        mine = self.le_mine.text()
+        if(rnd>0.66):
+            com = "가위"
+        elif(rnd>0.33):
+            com ="바위"
+        else:
+            com = "보"
         
+        if(mine =="가위" and com =="가위"):
+            result ="무승부"
+        if(mine =="가위" and com =="바위"):
+            result ="패배"        
+        if(mine =="가위" and com =="보"):
+            result ="승리"        
+
+        if(mine =="바위" and com =="가위"):
+            result ="승리"
+        if(mine =="바위" and com =="바위"):
+            result ="무승부"        
+        if(mine =="바위" and com =="보"):
+            result ="패배"        
+
+        if(mine =="보" and com =="가위"):
+            result ="패배"
+        if(mine =="보" and com =="바위"):
+            result ="승리"        
+        if(mine =="보" and com =="보"):
+            result ="무승부"        
+        self.le_com.setText(com)
+        self.le_result.setText(result)
         
         
         

@@ -2,6 +2,7 @@ import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
 import random
+import textwrap
 
 
 form_class = uic.loadUiType("pyqt07.ui")[0]
@@ -34,19 +35,20 @@ class MyWindow(QMainWindow, form_class):
         dan7 = str(result[6])
         dan8 = str(result[7])
         dan9 = str(result[8])
-    
-        val = val + dan +" * 1"+  + " = "+dan1+ swappedString
-        val = val + dan +" * 2"+  + " = "+dan2+ swappedString
-        val = val + dan +" * 3"+  + " = "+dan3+ swappedString
-        val = val + dan +" * 4"+  + " = "+dan4+ swappedString
-        val = val + dan +" * 5"+  + " = "+dan5+ swappedString
-        val = val + dan +" * 6"+  + " = "+dan6+ swappedString
-        val = val + dan +" * 7"+  + " = "+dan7+ swappedString
-        val = val + dan +" * 8"+  + " = "+dan8+ swappedString
-        val = val + dan +" * 9"+  + " = "+dan9+ swappedString
-            
-        print(val)   
-    
+        
+        val = val + dan +" * 1 = "+dan1+"\n"
+        val = val + dan +" * 2 = "+dan2+"\n"
+        val = val + dan +" * 3 = "+dan3+"\n"
+        val = val + dan +" * 4 = "+dan4+"\n"
+        val = val + dan +" * 5 = "+dan5+"\n"
+        val = val + dan +" * 6 = "+dan6+"\n"
+        val = val + dan +" * 7 = "+dan7+"\n"
+        val = val + dan +" * 8 = "+dan8+"\n"
+        val = val + dan +" * 9 = "+dan9+"\n"
+        
+        print(val)
+        self.te.setText(val)
+        
         
 #코드 실행시 GUI 창을 띄우는 부분
 #__name__ == "__main__" : 모듈로 활용되는게 아니라 해당 .py파일에서 직접 실행되는 경우에만 코드 실행

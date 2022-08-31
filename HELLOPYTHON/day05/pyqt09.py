@@ -3,40 +3,54 @@ from PyQt5.QtWidgets import *
 from PyQt5 import uic
 import random
 
-form_class = uic.loadUiType("pyqt06.ui")[0]
+form_class = uic.loadUiType("pyqt09.ui")[0]
 
 class MyWindow(QMainWindow, form_class):
 
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.pb0.clicked.connect(self.myclick)
-        self.pb1.clicked.connect(self.myclick)
-        self.pb2.clicked.connect(self.myclick)
-        self.pb3.clicked.connect(self.myclick)
-        self.pb4.clicked.connect(self.myclick)
-        self.pb5.clicked.connect(self.myclick)
-        self.pb6.clicked.connect(self.myclick)
-        self.pb7.clicked.connect(self.myclick)
-        self.pb8.clicked.connect(self.myclick)
-        self.pb9.clicked.connect(self.myclick)
-        self.pb.clicked.connect(self.mycall)
+        
+        self.pb.clicked.connect(self.myclick)
         # self.leMine.returnPressed.connect(self.myclick)
         
-    def mycall(self):
-        print("clicked")
-        str_tel = self.le.text()
-        QMessageBox.about(self,'전화번호',str_tel)
-
-        
     def myclick(self):
-        str_new = self.sender().text()
-        str_old = self.le.text()
-        self.le.setText(str_old+str_new)
+        firstStar =""
+        lastStar = ""
+        firstStar = self.le_first.text()
+        lastStar = self.le_last.text() 
+        result = ""
+        ifirstStar = int(firstStar)
+        ilastStar =int(lastStar)
+        
+        for i in range(ifirstStar):
+            result = result + "*"
+        
+        print(firstStar)
+        print(result)
         
         
+        public void mycick() {
+        String f = tf_first.getText();
+        String l = tf_last.getText();
+        String txt ="";
+        int ff = Integer.parseInt(f);
+        int ll = Integer.parseInt(l);
+        for(int i = ff; i<=ll;i++) {
+            txt += drawStar(i);
+        }
         
-        
+        ta.setText(txt);
+    }
+
+    public String drawStar(int cnt) {
+        String ret ="";
+        for(int i = 0; i<cnt; i++) {
+            ret += "*";
+        }
+        ret +="\n";
+        return ret;
+    }
         
     
         
