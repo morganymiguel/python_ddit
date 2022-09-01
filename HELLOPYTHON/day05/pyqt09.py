@@ -13,44 +13,28 @@ class MyWindow(QMainWindow, form_class):
         
         self.pb.clicked.connect(self.myclick)
         # self.leMine.returnPressed.connect(self.myclick)
+    
+    def drawStar(self,cnt):
+        ret =""
+        for i in range(cnt):
+            ret+="*"
+        ret +="\n"
+        
         
     def myclick(self):
-        firstStar =""
-        lastStar = ""
-        firstStar = self.le_first.text()
-        lastStar = self.le_last.text() 
-        result = ""
-        ifirstStar = int(firstStar)
-        ilastStar =int(lastStar)
+        str_f = self.le_first.text()
+        str_l = self.le_last.text()
         
-        for i in range(ifirstStar):
-            result = result + "*"
+        istr_f = int(str_f)
+        istr_l = int(str_l)
         
-        print(firstStar)
-        print(result)
+        txt = ""
+        for i in range(istr_f, istr_l+1):
+            txt += self.drawStar(i)
         
+        self.te.setText(txt)
         
-        public void mycick() {
-        String f = tf_first.getText();
-        String l = tf_last.getText();
-        String txt ="";
-        int ff = Integer.parseInt(f);
-        int ll = Integer.parseInt(l);
-        for(int i = ff; i<=ll;i++) {
-            txt += drawStar(i);
-        }
-        
-        ta.setText(txt);
-    }
-
-    public String drawStar(int cnt) {
-        String ret ="";
-        for(int i = 0; i<cnt; i++) {
-            ret += "*";
-        }
-        ret +="\n";
-        return ret;
-    }
+    
         
     
         

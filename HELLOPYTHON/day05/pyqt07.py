@@ -13,6 +13,7 @@ class MyWindow(QMainWindow, form_class):
         super().__init__()
         self.setupUi(self)
         self.pb.clicked.connect(self.myclick)
+        
         # self.leMine.returnPressed.connect(self.myclick)
         
     def myclick(self):
@@ -48,6 +49,15 @@ class MyWindow(QMainWindow, form_class):
         
         print(val)
         self.te.setText(val)
+        
+    # 쌤 버전:
+    def myClick(self):
+        
+        dan = self.le.text()
+        idan =int(dan)
+        txt =""
+        for i in range(1, 9+1):
+            txt += "{}*{}={}\n".format(idan, i, idan*i)
         
         
 #코드 실행시 GUI 창을 띄우는 부분

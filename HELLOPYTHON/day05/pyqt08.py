@@ -13,6 +13,7 @@ class MyWindow(QMainWindow, form_class):
         self.pb.clicked.connect(self.myclick)
         # self.leMine.returnPressed.connect(self.myclick)
         
+        
 
 
         
@@ -30,26 +31,22 @@ class MyWindow(QMainWindow, form_class):
         else:
             com = "보"
         
-        if(mine =="가위" and com =="가위"):
-            result ="무승부"
-        if(mine =="가위" and com =="바위"):
-            result ="패배"        
-        if(mine =="가위" and com =="보"):
-            result ="승리"        
-
-        if(mine =="바위" and com =="가위"):
-            result ="승리"
-        if(mine =="바위" and com =="바위"):
-            result ="무승부"        
-        if(mine =="바위" and com =="보"):
-            result ="패배"        
-
-        if(mine =="보" and com =="가위"):
-            result ="패배"
-        if(mine =="보" and com =="바위"):
-            result ="승리"        
-        if(mine =="보" and com =="보"):
-            result ="무승부"        
+        if mine =="가위" and com == "가위": result ="무승부"
+        if mine =="가위" and com =="바위": result ="패배"    
+        if mine =="가위" and com =="보" :  result ="승리"        
+           
+        if mine =="바위" and com =="가위": result ="승리"
+        if mine =="바위" and com =="바위": result ="무승부"        
+        if mine =="바위" and com =="보":  result ="패배"        
+           
+        if mine =="보" and com =="가위": result ="패배"
+        if mine =="보" and com =="바위": result ="승리"        
+        if mine =="보" and com =="보" :  result ="무승부"   
+           
+        
+        print("나: ",mine)
+        print("컴: ", com)     
+        print("결과: ", result)     
         self.le_com.setText(com)
         self.le_result.setText(result)
         
