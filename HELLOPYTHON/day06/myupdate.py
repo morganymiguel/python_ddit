@@ -24,8 +24,9 @@ sql1 = f"""UPDATE EMP
              SET E_NAME ='{e_name}', SEX ='{sex}', ADDR ='{addr}'
            WHERE E_ID ='{e_id}' """
 print(sql1)
-cur.execute(sql1)
+cnt = cur.execute(sql1)
 
+print("cnt",cnt)
 sql = "SELECT * FROM EMP"
 cur.execute(sql)
 res = cur.fetchall()

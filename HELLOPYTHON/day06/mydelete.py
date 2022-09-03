@@ -19,7 +19,9 @@ e_id = '6'
 sql1 = f"""DELETE FROM EMP
             WHERE E_ID = '{e_id}'"""
 print(sql1)
-cur.execute(sql1)
+cnt = cur.execute(sql1)
+
+print("cnt",cnt)
 
 sql = "SELECT * FROM EMP"
 cur.execute(sql)
