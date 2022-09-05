@@ -1,8 +1,7 @@
 from django.http.response import HttpResponse
-from aiohttp.client import request
-from conda_build import render
 from django.views.decorators.csrf import csrf_exempt
-import pymysql
+from HELLODJANGO.daoemp import DaoEmp
+from django.shortcuts import render
 
 def helloworld(request):
     return HttpResponse("Hello World")
@@ -15,21 +14,33 @@ def myparam(request):
         return HttpResponse("param: "+a)
         
 def db(request):
+    de = DaoEmp()
+    list = de.mylist()
+    txt =""
+    for e in list:
+        txt += "{},{},{},{}<br/>".format(e['e_id'],e['e_name'],e['sex'],e['addr'])
     
+    return HttpResponse(txt)
 
+def forward(request):
+    a="홍길동"
+    b=["전우치","신사임당","허균"]
+    de= DaoEmp()
+    mylist = de.mylist()
+    # mylist = ['e_id':'1','e_name':'1','sex': '1','addr': '1',
+              # 'e_id':'2','e_name':'2','sex': '2','addr': '2',
+              # 'e_id':'3','e_name':'3','sex': '3','addr': '3']
+    data = {
+        'a': a,
+        'b': b,
+        'mylist': mylist
+         }
+    return render(request,"forward.html", data)
 
-    con = pymysql.connect(host= '127.0.0.1',user = 'root', password = 'python',
-    db = 'python', charset='utf8',port =3305,
-    autocommit = True,
-    cursorclass=pymysql.cursors.DictCursor
-    )
-    cur = con.cursor()
-
-    sql = "SELECT * FROM EMP"
-
-    cur.execute(sql)
-    res = cur.fetchall()
-    a =""
-    for data in res:
-        a =a + data +"\n"
-    return HttpResponse("db\n"+ a)
+def emp(request):
+    de = DaoEmp()
+    mylist = de.mylist()
+    data = {
+        'mylist': mylist 
+        }
+    return render(request,"emp.html", data)

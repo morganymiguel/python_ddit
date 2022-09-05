@@ -22,6 +22,8 @@ urlpatterns = [
     path('hello',views.helloworld),
     path('param',views.myparam),
     path('db', views.db),
+    path('forward',views.forward),
+    path('emp',views.emp),
     # path('')
     # path('db')
 ] 
