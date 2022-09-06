@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	var cnt ='{{cnt}}';
+	if(cnt = 1 ){
+		alert("정상적으로 실행되었습니다.까꿍");
+		location.href = "emp_list";
+	}else{
+		alert("실행도중 문제가 생겼습니다.까꿍");
+// 		history.back();	
+		history.go(-1);
+	}
+</script>
+</head>
+<body>
+EMP_ADD_ACT
+</body>
+</html>

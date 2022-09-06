@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>emp_add</h3>
+	<form action="emp_add_act" method= "post">
+	{% csrf_token %}
+		<table border="1">
+			<tr>
+				<th>사번</th>
+				<td><input type="text" name="e_id"></td>
+			</tr>
+			<tr>
+				<th>이름</th>
+				<td><input type="text" name="e_name"></td>
+			</tr>
+			<tr>
+				<th>성별</th>
+				<td><input type="text" name="sex"></td>
+			</tr>
+			<tr>
+				<th>주소</th>
+				<td><input type="text" name="addr"></td>
+			</tr>
+		</table>
+		<input type="submit" value="실행">
+	</form>
+</body>
+</html>
