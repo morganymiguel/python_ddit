@@ -9,10 +9,10 @@ de = DaoEmp()
 
 
 
-def emp(request):
-    dblist = de.mylist()
+def emp_list(request):
+    list = de.mylist()
     attr = {
-        'dblist' : dblist
+        'list' : list
     }
     return render(request,'emp_list.html',attr)
 
@@ -34,12 +34,46 @@ def emp_add_act(request):
         
 def emp_detail(request):
     e_id = request.GET.get('e_id','__')
+    
     emp = de.myone(e_id)
     
     attr = {
-        
         'emp': emp
     }
     
     return render(request,"emp_detail.html",attr)
+
+def emp_mod(request):
+    e_id = request.GET.get('e_id','__')
+    emp = de.myone(e_id)
+    
+    attr = {
+        'emp': emp
+    }
+    
+    return render(request,"emp_mod.html",attr)
+
+def emp_mod_act(request):
+    e_id = request.POST["e_id"]
+    e_name = request.POST["e_name"]
+    sex = request.POST["sex"]
+    addr = request.POST["addr"]
+    cnt = de.myupdate(e_id, e_name, sex, addr)
+    
+    attr = {
+        'cnt': cnt
+    }
+    
+    return render(request, "emp_mod_act.html", attr)
+
+def emp_del_act(request):
+    
+    e_id = request.POST["e_id"]
+    cnt = de.mydelete(e_id)
+    attr = {
+        'cnt': cnt
+    }
+
+    return render(request, "emp_del_act.html", attr)
+      
     

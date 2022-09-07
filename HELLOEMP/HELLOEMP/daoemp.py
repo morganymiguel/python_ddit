@@ -17,7 +17,7 @@ class DaoEmp:
     
     def myone(self,e_id):
         sql = f"""
-            SELECT e_id,e_name,sex,addr 
+            SELECT e_id,e_name,sex, addr 
             FROM emp
             WHERE
                 e_id = '{e_id}'
@@ -50,9 +50,32 @@ class DaoEmp:
                 e_id = '{e_id}'
 
         """
-        cnt = self.cur.execute(sql)
-        self.con.commit()
-        return cnt    
+        
+        cnt = 0
+        try:
+            cnt = self.cur.execute(sql)
+            self.con.commit()
+        except:
+            cnt = 0
+            
+        return cnt
+          
+    def mydelete(self,e_id):
+        sql = f"""
+            delete from emp
+            where
+                e_id = '{e_id}'
+
+        """
+        
+        cnt = 0
+        try:
+            cnt = self.cur.execute(sql)
+            self.con.commit()
+        except:
+            cnt = 0
+            
+        return cnt
         
     def __del__(self):
         self.cur.close()

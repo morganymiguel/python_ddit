@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>test3</title>
+
+<script type = "text/javascript">
+function myclick(){
+	lotto = [1,2,3,4,5,  6,7,8,9,10,
+		11,12,13,14,15,  16,17,18,19,20,
+		21,22,23,24,25,  26,27,28,29,30,
+		31,32,33,34,35,  36,37,38,39,40,
+		41,42,43,44,45]
+	for( i = 0; i< 1000;i++){
+		rnd = parseInt(Math.random()*45);
+		tempa = lotto[rnd];
+		tempb = lotto[0];
+		lotto[0] = tempa;
+		lotto[rnd] = tempb;
+	}
+	
+	var mytds = document.querySelectorAll(".mytd");
+	
+	mytds[0].innerHTML = lotto[0];
+	mytds[1].innerHTML = lotto[1];
+	mytds[2].innerHTML = lotto[2];
+	mytds[3].innerHTML = lotto[3];
+	mytds[4].innerHTML = lotto[4];
+	mytds[5].innerHTML = lotto[5];
+	mytds[6].innerHTML = lotto[6];
+	
+	
+}
+</script>
+</head>
+<body>
+<table>
+	<tr>
+		<td class="mytd">__</td>
+		<td class="mytd">__</td>
+		<td class="mytd">__</td>
+		<td class="mytd">__</td>
+		<td class="mytd">__</td>
+		<td class="mytd">__</td>
+		<td class="mytd">__</td>
+	</tr>
+	<tr>
+		<td colspan = "6">
+			<input type = "button" value = "로또번호 생성하기" onclick="myclick()"/>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

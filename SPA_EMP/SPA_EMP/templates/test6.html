@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>test2</title>
+
+<script type = "text/javascript">
+function comArr(){
+	var arr = [0,1,2,3,4,5,6,7,8,9];
+	for(var i = 0; i<1000; i++){
+		var rnd =parseInt(Math.random()*10);
+	
+		tempa = arr[rnd];
+		tempb = arr[0];
+		arr[rnd] = tempa;
+		arr[0] = tempb;
+	}
+	
+	console.log(arr)
+	return com;
+}
+
+function myclick(){
+	var obj_mine = document.querySelector("#it_mine");
+	var mine = obj_mine.value;
+	var arr = [];
+	arr[0] = parseInt(mine.substring(0,1));
+	arr[1] = parseInt(mine.substring(1,2));
+	arr[2] = parseInt(mine.substring(2,3));
+	console.log(obj_mine);	
+	console.log(mine);	
+	var com = comArr();
+	alert(com);
+	var strike = getStrike();
+	
+}
+function myClick(){
+}	
+</script>
+</head>
+<body>
+<table>
+	<tr colspan="2">
+		<td>맞칠수:</td>
+		<td colspan="1">
+			<input type ="text" id ="it_mine"/>
+		</td>
+	</tr>
+	<tr>
+		<td colspan = "2">
+			<input type ="button" value ="맞춰보기" onclick="myclick()"/>
+		</td>
+	</tr>
+	<tr>
+		<td colspan = "2">
+			<textarea id = "ta" rows = "20" cols="20"></textarea>
+		</td>
+	</tr>
+
+</table>
+</body>
+</html>

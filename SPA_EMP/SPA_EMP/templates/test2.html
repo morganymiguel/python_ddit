@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>test2</title>
+
+<script type = "text/javascript">
+function myClick(){
+	var obj = document.querySelector("#it");
+	var a = obj.value;
+	var aa = parseInt(a);
+	aa = aa * 2;
+	console.log(aa);
+	obj.value = aa;
+}	
+</script>
+</head>
+<body>
+<input type = "text" id="it" value ="100">
+<a href ="javascript:myClick()">double</a>
+</body>
+</html>
