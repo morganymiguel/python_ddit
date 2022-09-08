@@ -2,8 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>test3</title>
-
+<title>jqtest3</title>
+<script src="static/jquery-3.6.1.js"></script>
 <script type = "text/javascript">
 function myclick(){
 	lotto = [1,2,3,4,5,  6,7,8,9,10,
@@ -18,33 +18,29 @@ function myclick(){
 		lotto[0] = tempa;
 		lotto[rnd] = tempb;
 	}
+	console.log(lotto[0]);
+	console.log(lotto[1]);
+	console.log(lotto[2]);
+	console.log(lotto[3]);
+	console.log(lotto[4]);
+	console.log(lotto[5]);
+	console.log(lotto[6]);
+// 	var mytds = document.querySelectorAll(".mytd");
+// 	var mytds = $(".mytd");
 	
-	var mytds = document.querySelectorAll(".mytd");
-	
-	for(var i = 0; i<7; i++){
-		for(j = 0; j<7; j++){
-			var a = lotto[i];
-			var b = lotto[j];
-			if(a<b){
-				lotto[i] = b;
-				lotto[j] = a;
-				
-			}
-		}
-		
-	}
-	
-	
-	mytds[0].innerHTML = lotto[0];
-	mytds[1].innerHTML = lotto[1];
-	mytds[2].innerHTML = lotto[2];
-	mytds[3].innerHTML = lotto[3];
-	mytds[4].innerHTML = lotto[4];
-	mytds[5].innerHTML = lotto[5];
-	mytds[6].innerHTML = lotto[6];
+	$(".mytd").eq(0).html(lotto[0]);
+	$(".mytd").eq(1).html(lotto[1]);
+	$(".mytd").eq(2).html(lotto[2]);
+	$(".mytd").eq(3).html(lotto[3]);
+	$(".mytd").eq(4).html(lotto[4]);
+	$(".mytd").eq(5).html(lotto[5]);
+	$(".mytd").eq(6).html(lotto[6]);
 	
 	
 }
+$(document).ready(function(){
+	$("#btn").bind("click", myclick);		  
+});
 </script>
 </head>
 <body>
@@ -61,6 +57,7 @@ function myclick(){
 	<tr>
 		<td colspan = "6">
 			<input type = "button" value = "로또번호 생성하기" onclick="myclick()"/>
+			<input id="btn" type = "button" value = "로또번호 생성하기jquery" />
 		</td>
 	</tr>
 </table>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>test2</title>
+<script src="static/jquery-3.6.1.js"></script>
+<script type = "text/javascript">
+
+var com_arr = [1,2,3];
+	
+	
+	function comArr(){
+		var arr = [0,1,2,3,4,5,6,7,8,9];
+		for(var i = 0; i<1000; i++){
+			var rnd =parseInt(Math.random()*10);
+			var tempa = arr[rnd];
+			var tempb = arr[0];
+			arr[rnd] = tempb;
+			arr[0] = tempa;
+		}
+		com_arr[0] = arr[0]
+		com_arr[1] = arr[1]
+		com_arr[2] = arr[2]
+		console.log(com_arr)
+	}
+	function getStrike(com_arr, mine_arr) {
+		var cnt = 0;
+		if(com_arr[0]==mine_arr[0]) cnt++;
+		if(com_arr[1]==mine_arr[1]) cnt++;
+		if(com_arr[2]==mine_arr[2]) cnt++;
+		return cnt;
+	}
+	function getBall(com_arr, mine_arr ) {
+		var cnt = 0;
+		if(com_arr[0]==mine_arr[1] || com_arr[0]==mine_arr[2]) cnt++;
+		if(com_arr[1]==mine_arr[0] || com_arr[1]==mine_arr[2]) cnt++;
+		if(com_arr[2]==mine_arr[0] || com_arr[2]==mine_arr[1]) cnt++;
+		return cnt;
+	}
+	
+	function myclick(){
+		
+		var mine = $("#it_mine").val();
+		console.log(mine);
+		var mine_arr = [-1,-1,-1];
+		mine_arr[0] = parseInt(mine.substring(0,1));
+		mine_arr[1] = parseInt(mine.substring(1,2));
+		mine_arr[2] = parseInt(mine.substring(2,3));
+	
+		var strike = getStrike(com_arr,mine_arr);
+		var ball = getBall(com_arr,mine_arr);
+		
+		console.log(strike, ball);
+		var str_line = mine +"-"+strike + "S"+ball+"B\n";
+		var str_old = $("#ta").val();
+		$("#ta").val(str_old+str_line);
+		$("#it_mine").val("");
+		
+		if(strike ==3){
+			alert("당신이 이겼습니다.");
+		}
+		
+	}
+$(document).ready(function(){
+	$("#btn").bind("click",myclick);
+	comArr();
+		
+		
+});
+</script>
+</head>
+<body>
+<table>
+	<tr colspan="2">
+		<td>맞칠수:</td>
+		<td colspan="1">
+			<input type ="text" id ="it_mine"/>
+		</td>
+	</tr>
+	<tr>
+		<td colspan = "2">
+			<input type ="button" value ="맞춰보기" id="btn"/>
+		</td>
+	</tr>
+	<tr>
+		<td colspan = "2">
+			<textarea id = "ta" rows = "20" cols="20"></textarea>
+		</td>
+	</tr>
+
+</table>
+</body>
+</html>

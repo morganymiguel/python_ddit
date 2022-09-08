@@ -13,7 +13,6 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
 from django.urls import path
 from SPA_EMP import views
 
@@ -26,5 +25,12 @@ urlpatterns = [
     path('test4', views.test4),
     path('test5', views.test5),
     path('test6', views.test6),
+    path('jqtest1', views.jqtest1),
+    path('jqtest2', views.jqtest2),
+    path('jqtest3', views.jqtest3),
+    path('jqtest4', views.jqtest4),
+    path('jqtest5', views.jqtest5),
+    path('jqtest6', views.jqtest6),
+    path('emp_list_ajax', views.emp_list_ajax),
     
 ]

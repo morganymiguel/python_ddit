@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jqtest2</title>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+<script src="static/jquery-3.6.1.js"></script>
+<script type = "text/javascript">
+function myclick(){
+	var a = $("#it").val();
+	var aa = parseInt(a);
+	aa = a * 2;
+	console.log(aa);
+	$("#it").val(aa);
+}
+$(document).ready(function(){
+	$("#mya").bind("click",myclick);
+});
+</script>
+</head>
+<body>
+<input type = "text" id = "it" value = "100"/>
+<a href="#" id = "mya">double</a>
+
+
+</body>
+</html>
