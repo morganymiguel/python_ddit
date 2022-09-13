@@ -6,10 +6,109 @@
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 <script src="static/jquery-3.6.1.js"></script>
 <script type = "text/javascript">
-function myclick(){
+//삭제
+function mydelete(){
+	var param = {
+			e_id : $("#e_id").val()
+	}
+	$.ajax({
+		type: "POST",
+		url: "emp_delete.ajax",
+		dataType:"json",
+		data: param,
+		success: function(data){
+			var cnt = data.cnt;
+			if(cnt=='1'){
+				myselects();
+				$("#e_id").val("");
+				$("#e_name").val("");
+				$("#sex").val("");
+				$("#addr").val("");
+			}else{
+				alert("삭제도중 문제가 생겼습니다.");
+			}
+		}
+	});
+}
+//수정
+function myupdate(){
+	var param = {
+			e_id 	: $("#e_id").val(),
+			e_name	: $("#e_name").val(),
+			sex 	: $("#sex").val(),
+			addr 	: $("#addr").val()
+	}
+	$.ajax({
+		type:"POST",
+		url:"emp_update.ajax",
+		dataType:"json",
+		data: param,
+		success : function(data){
+			var cnt = data.cnt;
+			if(cnt=='1'){
+				myselects();
+				$("#e_id").val("");
+				$("#e_name").val("");
+				$("#sex").val("");
+				$("#addr").val("");
+			}else{
+				alert("수정도중 문제가 생겼습니다.");
+			}
+		}
+	})
+}
+//추가
+function myinsert(){
+	var param = {
+		e_id 	: $("#e_id").val(),
+		e_name	: $("#e_name").val(),
+		sex 	: $("#sex").val(),
+		addr 	: $("#addr").val()
+	}
+	$.ajax({
+		type:"POST",
+		url:"emp_insert.ajax",
+		dataType:"json",
+		data: param,
+		success : function(data){
+			var cnt = data.cnt;
+			if(cnt=='1'){
+				myselects();
+				$("#e_id").val();
+				$("#e_name").val();
+				$("#sex").val();
+				$("#addr").val();
+			}else{
+				alert("추가도중 문제가 생겼습니다.");
+			}
+		}
+	});
+	
+	
+};
+//e_id클릭으로 정보 출력
+function myselect(e_id){
+	var param = {e_id : e_id}
+	$.ajax({
+		type: "GET",
+		url: "emp_detail.ajax",
+		dataType:"json",
+		data : param,
+		success : function(data){
+			var emp = data.emp;
+			$("#e_id").val(emp.e_id);
+			$("#e_name").val(emp.e_name);
+			$("#sex").val(emp.sex);
+			$("#addr").val(emp.addr);
+			console.log(data.emp);
+		}
+	});
+}
+
+function myselects(){
 	$.ajax({
 		type: "GET", //요청 메소드 방식
-		url:"emp_list_ajax",
+		url:"emp_list.ajax",
 		dataType:"json", //서버가 요청 URL을 통해서 응답하는 내용의 타입
 		success : function(data){
 			var list = data.list;
@@ -21,7 +120,7 @@ function myclick(){
 				var addr = list[i].addr;
 				txt += `
 				<tr>
-					<td>${e_id}</td>
+					<td><a href="javascript:myselect('${e_id}')"/>${e_id}</a></td>
 					<td>${e_name}</td>
 					<td>${sex}</td>
 					<td>${addr}</td>
@@ -41,6 +140,14 @@ function myclick(){
 		}
 	});
 }
+$(document).ready(function(){
+	/* $("#btn").bind("click",myclick); */
+	myselects();
+	$("#btn_add").bind('click',myinsert);
+	$("#btn_mod").bind('click',myupdate);
+	$("#btn_del").bind('click',mydelete);
+});
+
 </script>
 </head>
 <body>
@@ -55,10 +162,45 @@ function myclick(){
 	</thead>
 	<tbody>
 		<tbody id="mytbody">
-						
+			<tr>
+				<td colspan= '4'>해당하는 데이터가 없습니다.</td>
+			</tr>
 		</tbody>
 	</tbody>
 </table>
-<a href ="javascript:myclick()">click</a>
+
+<table border="1px">
+	<tr>
+		<td>사번</td>
+		<td>
+			<input type="text" id="e_id">
+		</td>
+	</tr>
+	<tr>
+		<td>이름</td>
+		<td>
+			<input type="text" id="e_name">
+		</td>
+	</tr>
+	<tr>
+		<td>성별</td>
+		<td>
+			<input type="text" id="sex">
+		</td>
+	</tr>
+	<tr>
+		<td>주소</td>
+		<td>
+			<input type="text" id="addr">
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<input type="button" id="btn_add" value ="추가">
+			<input type="button" id="btn_mod" value ="수정">
+			<input type="button" id="btn_del" value ="삭제">
+		</td>
+	</tr>
+</table>
 </body>
 </html>

@@ -1,0 +1,174 @@
+<html>
+<head>
+<title>테트리스3</title>	
+<style type="text/css">
+td{
+	width:20px;
+	height:24px;
+}
+</style>
+<script>
+var i = 4;//y
+var j = 3;//x
+function myrender(){
+	var tds = document.querySelectorAll("td");
+	tds[0].style.backgroundColor = "red";
+	var idx = parseInt(i*10 + j)
+	tds[idx].style.backgroundColor = "red";
+}
+window.addEventListener("keydown", (e) => {
+	
+	const rst = e.keyCode;
+	if(rst == '40'){
+		i = i+1;
+		console.log("하")
+		myrender(i,j)
+	}else if(rst == '37'){
+		j= j-1;
+		console.log("좌")
+		myrender(i,j)
+	}else if(rst == '38'){
+		i= i-1;
+		console.log("상")
+		myrender(i,j)
+	}else if(rst == '39'){
+		j= j+1;
+		console.log("우")
+		myrender(i,j)
+	}else{
+		console.log("no action");
+	}
+});
+	
+</script>
+</head>
+<body onload="myrender()">
+	<table border="1px">
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		
+	</table>
+</body>
+</html>

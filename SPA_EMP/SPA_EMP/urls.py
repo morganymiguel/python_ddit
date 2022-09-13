@@ -31,6 +31,10 @@ urlpatterns = [
     path('jqtest4', views.jqtest4),
     path('jqtest5', views.jqtest5),
     path('jqtest6', views.jqtest6),
-    path('emp_list_ajax', views.emp_list_ajax),
+    path('emp_list.ajax', views.emp_list_ajax),
+    path('emp_detail.ajax', views.emp_detail_ajax),
+    path('emp_insert.ajax', views.emp_insert_ajax),
+    path('emp_update.ajax', views.emp_update_ajax),
+    path('emp_delete.ajax', views.emp_delete_ajax),
     
 ]
