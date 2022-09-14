@@ -19,5 +19,9 @@ from TETRIS import views
 urlpatterns = [
     path('', views.tetris),
     path('tetris', views.tetris),
+    path('tetris2', views.tetris2),
     path('tetris3', views.tetris3),
+    path('tetris4', views.tetris4),
+    path('tetris5', views.tetris5),
+    path('tetris6', views.tetris6),
 ]

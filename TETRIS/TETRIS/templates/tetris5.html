@@ -1,0 +1,330 @@
+<html>
+<head>
+<title>테트리스3</title>	
+<style type="text/css">
+td{
+	width:20px;
+	height:24px;
+}
+</style>
+<script>
+
+class Block {
+	constructor() {
+		this.type = 7;
+		this.status= 1;
+		this.i=2;
+		this.j=2;
+	}
+
+}
+var b = new Block();
+var td2D = [];
+function myinit(){
+	var tds = document.querySelectorAll("td");
+	for(var i= 0; i<25; i++){
+		var line = [];
+		for(var j = 0; j<10;j++){
+			var idx = i*10 + j;
+			line.push(tds[idx]);
+		}
+	td2D.push(line);
+	}
+	myrender();
+}
+function changeStatus(){
+	if(b.type ==2 || b.type == 3 || b.type == 4){
+		if(b.status == 1){
+			b.status =2;
+		}else if(b.status ==2){
+			b.status = 1;
+		}
+	}
+	if(b.type ==5 || b.type == 6 || b.type == 7){
+		if(b.status == 1){
+			b.status =2;
+		}else if(b.status ==2){
+			b.status = 3;
+		}else if(b.status == 3){
+			b.status =4;
+		}else if(b.status ==4){
+			b.status = 1;
+		}
+	}
+	
+}
+function myrender(){
+	for(var i= 0; i<25; i++){
+		for(var j = 0; j<10;j++){
+			td2D[i][j].style.backgroundColor ="white";
+		}
+	}
+	//네모
+	if(b.type ==1){
+		td2D[b.i][b.j].style.backgroundColor = "red";
+		td2D[b.i][b.j+1].style.backgroundColor = "red";
+		td2D[b.i+1][b.j].style.backgroundColor = "red";
+		td2D[b.i+1][b.j+1].style.backgroundColor = "red";
+		
+	}
+	//긴짝대기
+	if(b.type ==2){
+		if(b.status ==1){
+			td2D[b.i][b.j-1].style.backgroundColor = "red";
+			td2D[b.i][b.j  ].style.backgroundColor = "red";
+			td2D[b.i][b.j+1].style.backgroundColor = "red";
+			td2D[b.i][b.j+2].style.backgroundColor = "red";
+		}
+		if(b.status ==2){
+			td2D[b.i-1][b.j].style.backgroundColor = "red";
+			td2D[b.i][b.j  ].style.backgroundColor = "red";
+			td2D[b.i+1][b.j].style.backgroundColor = "red";
+			td2D[b.i+2][b.j].style.backgroundColor = "red";
+		}
+	}
+	//번개1
+	if(b.type ==3){
+		if(b.status ==1){
+			td2D[b.i-1][b.j].style.backgroundColor = "red";
+			td2D[b.i][b.j].style.backgroundColor = "red";
+			td2D[b.i][b.j+1].style.backgroundColor = "red";
+			td2D[b.i+1][b.j+1].style.backgroundColor = "red";
+		}
+		if(b.status ==2){
+			td2D[b.i][b.j-1].style.backgroundColor = "red";
+			td2D[b.i][b.j].style.backgroundColor = "red";
+			td2D[b.i-1][b.j].style.backgroundColor = "red";
+			td2D[b.i-1][b.j+1].style.backgroundColor = "red";
+		}
+	}	
+	//번개2
+	if(b.type ==4){
+		if(b.status ==1){
+			td2D[b.i-1][b.j+1].style.backgroundColor = "red";
+			td2D[b.i][b.j].style.backgroundColor = "red";
+			td2D[b.i][b.j+1].style.backgroundColor = "red";
+			td2D[b.i+1][b.j].style.backgroundColor = "red";
+		}
+		if(b.status ==2){
+			td2D[b.i-1][b.j-1].style.backgroundColor = "red";
+			td2D[b.i-1][b.j].style.backgroundColor = "red";
+			td2D[b.i][b.j].style.backgroundColor = "red";
+			td2D[b.i][b.j+1].style.backgroundColor = "red";
+		}
+	}
+	//ㄴ
+	if(b.type ==5){
+		if(b.status ==1){		
+			td2D[b.i-1	][b.j	].style.backgroundColor = "red";
+			td2D[b.i	][b.j	].style.backgroundColor = "red";
+			td2D[b.i+1	][b.j	].style.backgroundColor = "red";
+			td2D[b.i+1	][b.j+1	].style.backgroundColor = "red";
+		}
+		if(b.status ==2){		
+			td2D[b.i	][b.j-1	].style.backgroundColor = "red";
+			td2D[b.i	][b.j	].style.backgroundColor = "red";
+			td2D[b.i	][b.j+1	].style.backgroundColor = "red";
+			td2D[b.i+1	][b.j-1	].style.backgroundColor = "red";
+			
+		}
+		if(b.status ==3){		
+			td2D[b.i-1	][b.j-1	].style.backgroundColor = "red";
+			td2D[b.i-1	][b.j	].style.backgroundColor = "red";
+			td2D[b.i	][b.j	].style.backgroundColor = "red";
+			td2D[b.i+1	][b.j	].style.backgroundColor = "red";
+		}
+		if(b.status ==4){		
+			td2D[b.i	][b.j-1	].style.backgroundColor = "red";
+			td2D[b.i	][b.j	].style.backgroundColor = "red";
+			td2D[b.i	][b.j+1	].style.backgroundColor = "red";
+			td2D[b.i-1	][b.j+1	].style.backgroundColor = "red";
+		}
+	}
+	//반대 ㄴ
+	if(b.type ==6){
+		if(b.status ==1){		
+			td2D[b.i-1	][b.j	].style.backgroundColor = "red";
+			td2D[b.i	][b.j	].style.backgroundColor = "red";
+			td2D[b.i+1	][b.j	].style.backgroundColor = "red";
+			td2D[b.i+1	][b.j-1	].style.backgroundColor = "red";
+		}
+		if(b.status ==2){		
+			td2D[b.i-1	][b.j-1	].style.backgroundColor = "red";
+			td2D[b.i	][b.j-1	].style.backgroundColor = "red";
+			td2D[b.i	][b.j	].style.backgroundColor = "red";
+			td2D[b.i	][b.j+1	].style.backgroundColor = "red";
+		}
+		if(b.status ==3){		
+			td2D[b.i-1	][b.j+1	].style.backgroundColor = "red";
+			td2D[b.i-1	][b.j	].style.backgroundColor = "red";
+			td2D[b.i	][b.j	].style.backgroundColor = "red";
+			td2D[b.i+1	][b.j	].style.backgroundColor = "red";
+		}
+		if(b.status ==4){		
+			td2D[b.i	][b.j-1	].style.backgroundColor = "red";
+			td2D[b.i	][b.j	].style.backgroundColor = "red";
+			td2D[b.i	][b.j+1	].style.backgroundColor = "red";
+			td2D[b.i+1	][b.j+1	].style.backgroundColor = "red";
+		}
+		
+	}
+	
+	//법규	
+	if(b.type ==7){
+		if(b.status ==1){
+			td2D[b.i-1	][b.j	].style.backgroundColor = "red";
+			td2D[b.i	][b.j	].style.backgroundColor = "red";
+			td2D[b.i	][b.j-1	].style.backgroundColor = "red";
+			td2D[b.i	][b.j+1	].style.backgroundColor = "red";
+		}
+		if(b.status ==2){
+			td2D[b.i-1][b.j].style.backgroundColor = "red";
+			td2D[b.i][b.j].style.backgroundColor = "red";
+			td2D[b.i+1][b.j].style.backgroundColor = "red";
+			td2D[b.i][b.j+1].style.backgroundColor = "red";
+		}
+		if(b.status ==3){
+			td2D[b.i][b.j-1].style.backgroundColor = "red";
+			td2D[b.i][b.j].style.backgroundColor = "red";
+			td2D[b.i][b.j+1].style.backgroundColor = "red";
+			td2D[b.i+1][b.j].style.backgroundColor = "red";
+		}
+		if(b.status ==4){
+			td2D[b.i][b.j-1].style.backgroundColor = "red";
+			td2D[b.i][b.j].style.backgroundColor = "red";
+			td2D[b.i-1][b.j].style.backgroundColor = "red";
+			td2D[b.i+1][b.j].style.backgroundColor = "red";
+		}
+	}
+
+
+}
+	
+window.addEventListener("keydown", (e) => {
+	if(e.code =="ArrowUp"){
+		changeStatus();
+	}
+	if(e.code =="ArrowDown"){
+		b.i++;
+	}
+	if(e.code =="ArrowLeft"){
+		b.j--;
+	}
+	if(e.code =="ArrowRight"){
+		b.j++;
+	}
+	myrender()	
+
+});
+	
+</script>
+</head>
+<body onload="myinit()">
+	<table border="1px">
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		
+		
+		
+		
+	</table>
+</body>
+</html>

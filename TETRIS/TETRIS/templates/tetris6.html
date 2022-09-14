@@ -1,0 +1,486 @@
+<html>
+<head>
+<title>테트리스3</title>	
+<style type="text/css">
+td{
+	width:20px;
+	height:24px;
+}
+</style>
+<script>
+class Block {
+	constructor() {
+		this.type = 2;
+		this.status= 1;
+		this.i=2;
+		this.j=2;
+	}
+
+}
+var b = new Block();
+
+var block2D=[
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0]
+];
+
+var stack2D=[
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[1,1,1,1,1, 1,1,1,0,0],	
+	[1,1,1,1,1, 1,1,1,0,0]
+];
+
+var scrin2D=[
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0, 0,0,0,0,0]
+];
+
+function setBlock2DFromBlock(){
+	if(b.type ==1){
+		block2D[b.i][b.j]    =b.type;
+		block2D[b.i][b.j+1]  =b.type;
+		block2D[b.i+1][b.j]  =b.type;
+		block2D[b.i+1][b.j+1]=b.type;	
+	}
+	//긴짝대기
+	if(b.type ==2){
+		if(b.status ==1){
+			block2D[b.i][b.j-1]= b.type;
+			block2D[b.i][b.j  ]= b.type;
+			block2D[b.i][b.j+1]= b.type;
+			block2D[b.i][b.j+2]= b.type;
+		}
+		if(b.status ==2){
+			block2D[b.i-1][b.j] = b.type;
+			block2D[b.i][b.j  ] = b.type;
+			block2D[b.i+1][b.j] = b.type;
+			block2D[b.i+2][b.j] = b.type;
+		}
+	}
+	//번개1
+	if(b.type ==3){
+		if(b.status ==1){
+			block2D[b.i-1][b.j	] = b.type;
+			block2D[b.i][b.j	] = b.type;
+			block2D[b.i][b.j+1	] = b.type;
+			block2D[b.i+1][b.j+1] = b.type;
+		}                          
+		if(b.status ==2){          
+			block2D[b.i][b.j-1	] = b.type;
+			block2D[b.i][b.j	] = b.type;
+			block2D[b.i-1][b.j	] = b.type;
+			block2D[b.i-1][b.j+1] = b.type;
+		}
+	}	
+	//번개2
+	if(b.type ==4){
+		if(b.status ==1){
+			block2D[b.i-1][b.j+1] 	= b.type;
+			block2D[b.i][b.j]		= b.type;
+			block2D[b.i][b.j+1]		= b.type;
+			block2D[b.i+1][b.j] 	= b.type;
+		}
+		if(b.status ==2){
+			block2D[b.i-1][b.j-1]   = b.type;
+			block2D[b.i-1][b.j]	 = b.type;
+			block2D[b.i][b.j]		 = b.type;
+			block2D[b.i][b.j+1]	 = b.type;
+		}
+	}
+	
+	//ㄴ
+	if(b.type ==5){
+		if(b.status ==1){		
+			block2D[b.i-1	][b.j	]=b.type;
+			block2D[b.i	][b.j	]	 =b.type;
+			block2D[b.i+1	][b.j	]=b.type;
+			block2D[b.i+1	][b.j+1	]=b.type;
+		}
+		if(b.status ==2){		 
+			block2D[b.i	][b.j-1	] 	 =b.type;
+			block2D[b.i	][b.j	]	 =b.type;
+			block2D[b.i	][b.j+1	]	 =b.type;
+			block2D[b.i+1	][b.j-1	]=b.type;
+			
+		}
+		if(b.status ==3){		
+			block2D[b.i-1	][b.j-1	]=b.type;
+			block2D[b.i-1	][b.j	]=b.type;
+			block2D[b.i	][b.j	]	 =b.type;
+			block2D[b.i+1	][b.j	]=b.type;
+		}
+		if(b.status ==4){		
+			block2D[b.i	][b.j-1	]	 =b.type;
+			block2D[b.i	][b.j	]	 =b.type;
+			block2D[b.i	][b.j+1	]	 =b.type;
+			block2D[b.i-1	][b.j+1	]=b.type;
+		}
+	}
+	//반대 ㄴ
+	if(b.type ==6){
+		if(b.status ==1){		
+			block2D[b.i-1	][b.j	]=b.type;
+			block2D[b.i	][b.j	]	 =b.type;
+			block2D[b.i+1	][b.j	]=b.type;
+			block2D[b.i+1	][b.j-1	]=b.type;
+		}
+		if(b.status ==2){		
+			block2D[b.i-1	][b.j-1	]=b.type;
+			block2D[b.i	][b.j-1	]=b.type;
+			block2D[b.i	][b.j	]=b.type;
+			block2D[b.i	][b.j+1	]=b.type;
+		}
+		if(b.status ==3){		
+			block2D[b.i-1	][b.j+1	]=b.type;
+			block2D[b.i-1	][b.j	]=b.type;
+			block2D[b.i	][b.j	]	 =b.type;
+			block2D[b.i+1	][b.j	]=b.type;
+		}
+		if(b.status ==4){		
+			block2D[b.i	][b.j-1	]=b.type;
+			block2D[b.i	][b.j	]=b.type;
+			block2D[b.i	][b.j+1	]=b.type;
+			block2D[b.i+1	][b.j+1	]=b.type;
+		}
+		
+	}
+	//법규	
+	if(b.type ==7){
+		if(b.status ==1){
+			block2D[b.i-1	][b.j	]=b.type;
+			block2D[b.i	][b.j	]=b.type;
+			block2D[b.i	][b.j-1	]=b.type;
+			block2D[b.i	][b.j+1	]=b.type;
+		}
+		if(b.status ==2){
+			block2D[b.i-1][b.j]=b.type;
+			block2D[b.i][b.j]  =b.type;
+			block2D[b.i+1][b.j]=b.type;
+			block2D[b.i][b.j+1]=b.type;
+		}
+		if(b.status ==3){
+			block2D[b.i  ][b.j-1] =b.type;
+			block2D[b.i  ][b.j	] =b.type;
+			block2D[b.i  ][b.j+1] =b.type;
+			block2D[b.i+1][b.j	] =b.type;
+		}
+		if(b.status ==4){
+			block2D[b.i	 ][b.j-1]	=b.type;
+			block2D[b.i	 ][b.j  ]	=b.type;
+			block2D[b.i-1][b.j  ]	=b.type;
+			block2D[b.i+1][b.j  ]	=b.type;
+		}
+	}
+}
+function setScrin2D(){
+	for(var i = 0; i<25; i++){
+		for(var j = 0; j<10; j++){
+			if(block2D[i][j]>0){
+				scrin2D[i][j] = block2D[i][j];
+			}
+		}
+	}
+	for(var i = 0; i<25; i++){
+		for(var j = 0; j<10; j++){
+			if(stack2D[i][j]>0){
+				scrin2D[i][j] = stack2D[i][j]
+			}
+		}
+	}
+} 
+function myrender(){
+	var tds = document.querySelectorAll("td");
+	for(var i = 0; i<25; i++){
+		for(var j = 0; j<10; j++){
+			var idx = parseInt(i*10 + j);
+			if(scrin2D[i][j]== 0){
+				tds[idx].style.backgroundColor = "white";
+			}
+			if(scrin2D[i][j]== 1){
+				tds[idx].style.backgroundColor = "red";
+			}
+			if(scrin2D[i][j]== 2){
+				tds[idx].style.backgroundColor = "orange";
+			}
+			if(scrin2D[i][j]== 3){
+				tds[idx].style.backgroundColor = "green";
+			}
+			if(scrin2D[i][j]== 4){
+				tds[idx].style.backgroundColor = "blue";
+			}
+			if(scrin2D[i][j]== 5){
+				tds[idx].style.backgroundColor = "purple";
+			}
+			if(scrin2D[i][j]== 6){
+				tds[idx].style.backgroundColor = "pink";
+			}
+			if(scrin2D[i][j]== 7){
+				tds[idx].style.backgroundColor = "yellow";
+			}
+			if(scrin2D[i][j]== 11){
+				tds[idx].style.backgroundColor = "light red";
+			}
+			if(scrin2D[i][j]== 12){
+				tds[idx].style.backgroundColor = "light orange";
+			}
+			if(scrin2D[i][j]== 13){
+				tds[idx].style.backgroundColor = "light green";
+			}
+			if(scrin2D[i][j]== 14){
+				tds[idx].style.backgroundColor = "light blue";
+			}
+			if(scrin2D[i][j]== 15){
+				tds[idx].style.backgroundColor = "light purple";
+			}
+			if(scrin2D[i][j]== 16){
+				tds[idx].style.backgroundColor = "light pink";
+			}
+			if(scrin2D[i][j]== 17){
+				tds[idx].style.backgroundColor = "light yellow";
+			}
+			
+		}
+	}
+	
+}
+window.addEventListener("keydown", (e) =>{
+	myclick(e);
+});
+function myclick(e){
+	if(e.code =="ArrowUp"){
+		changeStatus();
+	}
+	if(e.code =="ArrowDown"){
+		b.i++;
+	}
+	if(e.code =="ArrowLeft"){
+		b.j--;
+	}
+	if(e.code =="ArrowRight"){
+		b.j++;
+	}
+	
+}
+function changeStatus(){
+	if(b.type ==2 || b.type == 3 || b.type == 4){
+		if(b.status == 1){
+			b.status =2;
+		}else if(b.status ==2){
+			b.status = 1;
+		}
+	}
+	if(b.type ==5 || b.type == 6 || b.type == 7){
+		if(b.status == 1){
+			b.status =2;
+		}else if(b.status ==2){
+			b.status = 3;
+		}else if(b.status == 3){
+			b.status =4;
+		}else if(b.status ==4){
+			b.status = 1;
+		}
+	}
+	
+	myinit();
+	
+}
+function myinit(){
+	setBlock2DFromBlock();//블록을 설정
+	console.log(block2D);//도형이 들어가는지 확인
+	setScrin2D();
+	console.log(stack2D);//바닥에 깔리는 도형 확인
+	console.log(scrin2D);//전체
+	myrender();
+	
+}
+</script>
+</head>
+<body onload="myinit()">
+	<table border="1px">
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		<tr>
+			<td></td><td></td><td></td><td></td><td></td>
+			<td></td><td></td><td></td><td></td><td></td>
+		</tr>
+		
+		
+		
+		
+	</table>
+</body>
+</html>

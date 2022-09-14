@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>테트리스3</title>	
+<style type="text/css">
+td{
+	width:20px;
+	height:24px;
+}
+</style>
+<script>
+class Animal {
+
+	constructor() {
+		this.flagMove = true;
+	}
+	
+	die() {
+		this.flagMove = false;
+	}
+
+}
+var ani = new Animal();
+console.log(ani.flagMove);
+ani.die();
+console.log(ani.flagMove);
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
