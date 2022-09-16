@@ -1,0 +1,3 @@
+pip install redis
+pip install channels
+pip install channels_redis

@@ -17,6 +17,9 @@ class Block {
 	}
 
 }
+var flagIng = true;
+
+
 var b = new Block();
 
 var block2D=[
@@ -310,25 +313,25 @@ function myrender(){
 				tds[idx].style.backgroundColor = "yellow";
 			}
 			if(scrin2D[i][j]== 11){
-				tds[idx].style.backgroundColor = "light red";
+				tds[idx].style.backgroundColor = "lightRed";
 			}
 			if(scrin2D[i][j]== 12){
-				tds[idx].style.backgroundColor = "light orange";
+				tds[idx].style.backgroundColor = "lightOrange";
 			}
 			if(scrin2D[i][j]== 13){
-				tds[idx].style.backgroundColor = "light green";
+				tds[idx].style.backgroundColor = "lightGreen";
 			}
 			if(scrin2D[i][j]== 14){
-				tds[idx].style.backgroundColor = "light blue";
+				tds[idx].style.backgroundColor = "lightBlue";
 			}
 			if(scrin2D[i][j]== 15){
-				tds[idx].style.backgroundColor = "light purple";
+				tds[idx].style.backgroundColor = "lightPurple";
 			}
 			if(scrin2D[i][j]== 16){
-				tds[idx].style.backgroundColor = "light pink";
+				tds[idx].style.backgroundColor = "lightPink";
 			}
 			if(scrin2D[i][j]== 17){
-				tds[idx].style.backgroundColor = "light yellow";
+				tds[idx].style.backgroundColor = "lightYellow";
 			}
 			
 		}
@@ -338,6 +341,7 @@ function myrender(){
 window.addEventListener("keydown", (e) =>{
 	myclick(e);
 });
+
 function isCrushWall(){
 	var cnt = 0;
 	var flag = false;
@@ -380,11 +384,13 @@ function moveBlock2DToStack2D(){
 }
 
 function myclick(e){
+	if(!flagIng)
+		return;
+	
 	var bakType = b.type;
 	var bakStatus = b.status
 	var bakI = b.i;
 	var bakJ = b.j;
-	
 	var flagDown = false;
 	if(e.code =="ArrowUp"){
 		changeStatus();
@@ -420,34 +426,68 @@ function myclick(e){
 		b.j = bakJ
 		setBlock2DFromBlock();
 		setScrin2D();
-	
+	}
+	if(flagCrush && flagDown){
+		moveBlock2DToStack2D();
 		
-		if(flagDown){
-			moveBlock2DToStack2D();
-			
-			var cnt10 = getCnt10();
-			
-			remove10(cnt10);
-			console.log("cnt10",cnt10);
-			b.type		= parseInt(Math.random()*7+1);
-			b.status 	= 1;
-			b.i 		= 2;
-			b.j 		= 2;
-			setBlock2DFromBlock();
-			setScrin2D();
-			count();
+		if(
+			stack2D[4][0]>0 ||		
+			stack2D[4][1]>0 ||		
+			stack2D[4][2]>0 ||		
+			stack2D[4][3]>0 ||		
+			stack2D[4][4]>0 ||		
+			stack2D[4][5]>0 ||		
+			stack2D[4][6]>0 ||		
+			stack2D[4][7]>0 ||		
+			stack2D[4][8]>0 ||		
+			stack2D[4][9]>0 		
+		){
+			alert("게임에서 졌습니다.")
+			flagIng = false;
 		}
+		
+		var cnt10 = getCnt10();
+		var obj = document.querySelector("#my_mission");
+		var int_mission = parseInt(obj.innerText);
+		int_mission = int_mission - cnt10;
+		obj.innerText = int_mission; 
+		if(int_mission <1 ){
+			alert("승리");
+			flagIng = false;
+		}
+		
+		console.log("cnt10",cnt10)
+		
+// 		count(cnt10);내가 만든 소스;
+		
+		remove10(cnt10);
+		console.log("cnt10",cnt10);
+// 		b.type		= parseInt(Math.random()*7+1);
+		b.type		= 1;
+		b.status 	= 1;
+		b.i 		= 2;
+		b.j 		= 2;
+		setBlock2DFromBlock();
+		setScrin2D();
 	
 	}
 		
 	myrender();
 	
 }
-function count(){
+function count(cnt10){
+	var count = document.querySelector("#mydiv");
+		var mission = parseInt(count.textContent);
+	console.log("mission",mission)	
+	if(cnt10 >0){
+		mission--;
+		count.textContent = mission;
+	}
+	if(mission ==0){
+		count.textContent = 0;
+		alert("승리!!!!")
+	}
 	
-	var count = document.querySelector.val("#mydiv");
-	console.log("count",count)
-
 }
 function remove10(cnt10){
 	var s2D = [];
@@ -532,12 +572,18 @@ function myinit(){
 	setBlock2DFromBlock();//블록을 설정
 	setScrin2D();
 	myrender();
-	
+	mytime();
 }
+function mytime(){
+	myclick({'code':'ArrowDown'});
+	setTimeout(mytime, 500)
+
+}
+
 </script>
 </head>
 <body onload="myinit()">
-Mission:<div id="mydiv">10</div>
+Mission:<div id="my_mission">1</div>
 다음 블록이 나올때 10이 줄어든다.
 
 	<table border="1px">
