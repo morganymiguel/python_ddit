@@ -1,0 +1,42 @@
+<!-- chat/templates/chat/room.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Chat Room</title>
+</head>
+<body>
+	<a href ="javascript:fn_send()">send</a>
+    {{ room_name|json_script:"room-name" }}
+    <script>
+        const roomName = JSON.parse(document.getElementById('room-name').textContent);
+		var ws_url = 'ws://'
+            + window.location.host
+            + '/ws/chat/'
+            + roomName
+            + '/';
+		console.log("ws_url", ws_url);
+        const chatSocket = new WebSocket(ws_url);
+
+        chatSocket.onmessage = function(e) {
+            const data = JSON.parse(e.data);
+            console.log(data);
+            
+        };
+
+        chatSocket.onclose = function(e) {
+            console.error('Chat socket closed unexpectedly');
+        };
+
+       
+        
+        function fn_send(){
+        	var json={
+        			'message': 'hello'
+        	}
+        	chatSocket.send(JSON.stringify(json));;
+        }
+        
+    </script>
+</body>
+</html>
