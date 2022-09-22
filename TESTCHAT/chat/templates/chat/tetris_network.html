@@ -1,266 +1,265 @@
 <html>
 <head>
-<title>테트리스3</title>	
+<title>테트리스</title>
 <style type="text/css">
-td{
-	width:20px;
-	height:24px;
-}
-</style>
-<script>
-class Block {
-	constructor() {
-		this.type = 7;
-		this.status= 1;
-		this.i=2;
-		this.j=2;
+	td{
+		width: 20px;
+		height: 20px;
 	}
 
+</style>
+
+<script type="text/javascript">
+class Block {
+	constructor() {
+		this.type = 2;
+		this.status = 1;
+		this.i = 2;
+		this.j = 2;
+		
+	}
 }
+
 var flagIng = false;
-
-
 var b = new Block();
 
-var block2D=[
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
+var block2D = [
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
 
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0]
+];
+var stack2D = [
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
 
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0]
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[1,0,0,0,0,	0,0,0,0,0],
+	
+	[1,1,0,0,0,	0,0,0,0,0],
+	[1,1,1,1,1,	1,1,1,1,0],
+	[1,1,1,1,1,	1,1,1,1,0],
+	[1,1,1,1,1,	1,1,1,1,0],
+	[1,1,1,1,1,	1,1,1,1,0]
 ];
 
-var stack2D=[
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
+var scrin2D = [
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
 
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0]	
-];
-
-var scrin2D=[
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0],	
-	[0,0,0,0,0, 0,0,0,0,0]
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0],
+	[0,0,0,0,0,	0,0,0,0,0]
 ];
 
 function setBlock2DFromBlock(){
-	for(var i = 0; i<25; i++){
-		for(var j= 0; j<10; j++){
+	for(var i=0;i<25;i++){
+		for(var j=0;j<10;j++){
 			block2D[i][j]=0;
 		}
 	}
 	
-	if(b.type ==1){
-		block2D[b.i][b.j]    =b.type;
-		block2D[b.i][b.j+1]  =b.type;
-		block2D[b.i+1][b.j]  =b.type;
-		block2D[b.i+1][b.j+1]=b.type;	
-	}
-	//긴짝대기
-	if(b.type ==2){
-		if(b.status ==1){
-			block2D[b.i][b.j-1]= b.type;
-			block2D[b.i][b.j  ]= b.type;
-			block2D[b.i][b.j+1]= b.type;
-			block2D[b.i][b.j+2]= b.type;
-		}
-		if(b.status ==2){
-			block2D[b.i-1][b.j] = b.type;
-			block2D[b.i][b.j  ] = b.type;
-			block2D[b.i+1][b.j] = b.type;
-			block2D[b.i+2][b.j] = b.type;
-		}
-	}
-	//번개1
-	if(b.type ==3){
-		if(b.status ==1){
-			block2D[b.i-1][b.j	] = b.type;
-			block2D[b.i][b.j	] = b.type;
-			block2D[b.i][b.j+1	] = b.type;
-			block2D[b.i+1][b.j+1] = b.type;
-		}                          
-		if(b.status ==2){          
-			block2D[b.i][b.j-1	] = b.type;
-			block2D[b.i][b.j	] = b.type;
-			block2D[b.i-1][b.j	] = b.type;
-			block2D[b.i-1][b.j+1] = b.type;
-		}
-	}	
-	//번개2
-	if(b.type ==4){
-		if(b.status ==1){
-			block2D[b.i-1][b.j+1] 	= b.type;
-			block2D[b.i][b.j]		= b.type;
-			block2D[b.i][b.j+1]		= b.type;
-			block2D[b.i+1][b.j] 	= b.type;
-		}
-		if(b.status ==2){
-			block2D[b.i-1][b.j-1]   = b.type;
-			block2D[b.i-1][b.j]	 = b.type;
-			block2D[b.i][b.j]		 = b.type;
-			block2D[b.i][b.j+1]	 = b.type;
-		}
+	if(b.type == 1){
+		block2D[b.i		][b.j	] = b.type;
+		block2D[b.i		][b.j+1	] = b.type;
+		block2D[b.i+1	][b.j	] = b.type;
+		block2D[b.i+1	][b.j+1	] = b.type;
 	}
 	
-	//ㄴ
-	if(b.type ==5){
+	if(b.type == 2){
+		if(b.status == 1){
+			block2D[b.i	][b.j-1	] = b.type;
+			block2D[b.i	][b.j	] = b.type;
+			block2D[b.i	][b.j+1	] = b.type;
+			block2D[b.i	][b.j+2	] = b.type;
+		}
+		if(b.status == 2){
+			block2D[b.i-1	][b.j	] = b.type;
+			block2D[b.i		][b.j	] = b.type;
+			block2D[b.i+1	][b.j	] = b.type;
+			block2D[b.i+2	][b.j	] = b.type;
+		}
+	}	
+	if(b.type ==3){
 		if(b.status ==1){		
-			block2D[b.i-1	][b.j	]=b.type;
-			block2D[b.i	][b.j	]	 =b.type;
-			block2D[b.i+1	][b.j	]=b.type;
-			block2D[b.i+1	][b.j+1	]=b.type;
-		}
-		if(b.status ==2){		 
-			block2D[b.i	][b.j-1	] 	 =b.type;
-			block2D[b.i	][b.j	]	 =b.type;
-			block2D[b.i	][b.j+1	]	 =b.type;
-			block2D[b.i+1	][b.j-1	]=b.type;
-			
-		}
-		if(b.status ==3){		
-			block2D[b.i-1	][b.j-1	]=b.type;
-			block2D[b.i-1	][b.j	]=b.type;
-			block2D[b.i	][b.j	]	 =b.type;
-			block2D[b.i+1	][b.j	]=b.type;
-		}
-		if(b.status ==4){		
-			block2D[b.i	][b.j-1	]	 =b.type;
-			block2D[b.i	][b.j	]	 =b.type;
-			block2D[b.i	][b.j+1	]	 =b.type;
-			block2D[b.i-1	][b.j+1	]=b.type;
-		}
-	}
-	//반대 ㄴ
-	if(b.type ==6){
-		if(b.status ==1){		
-			block2D[b.i-1	][b.j	]=b.type;
-			block2D[b.i	][b.j	]	 =b.type;
-			block2D[b.i+1	][b.j	]=b.type;
-			block2D[b.i+1	][b.j-1	]=b.type;
+			block2D[b.i		][b.j+1	] = b.type;
+			block2D[b.i		][b.j	] = b.type;
+			block2D[b.i+1	][b.j	] = b.type;
+			block2D[b.i+1	][b.j-1	] = b.type;
 		}
 		if(b.status ==2){		
-			block2D[b.i-1	][b.j-1	]=b.type;
-			block2D[b.i	][b.j-1	]=b.type;
-			block2D[b.i	][b.j	]=b.type;
-			block2D[b.i	][b.j+1	]=b.type;
+			block2D[b.i-1	][b.j	] = b.type;
+			block2D[b.i		][b.j	] = b.type;
+			block2D[b.i		][b.j+1	] = b.type;
+			block2D[b.i+1	][b.j+1	] = b.type;
+		}
+	}
+	if(b.type ==4){
+		if(b.status ==1){		
+			block2D[b.i		][b.j-1	] = b.type;
+			block2D[b.i		][b.j	] = b.type;
+			block2D[b.i+1	][b.j	] = b.type;
+			block2D[b.i+1	][b.j+1	] = b.type;
+		}
+		if(b.status ==2){		
+			block2D[b.i-1	][b.j+1	] = b.type;
+			block2D[b.i		][b.j+1	] = b.type;
+			block2D[b.i		][b.j	] = b.type;
+			block2D[b.i+1	][b.j	] = b.type;
+		}
+	}
+	if(b.type ==5){
+		if(b.status ==1){		
+			block2D[b.i-1	][b.j	] = b.type;
+			block2D[b.i		][b.j	] = b.type;
+			block2D[b.i+1	][b.j	] = b.type;
+			block2D[b.i+1	][b.j+1	] = b.type;
+		}
+		if(b.status ==2){		
+			block2D[b.i		][b.j-1	] = b.type;
+			block2D[b.i		][b.j	] = b.type;
+			block2D[b.i		][b.j+1	] = b.type;
+			block2D[b.i-1	][b.j+1	] = b.type;
 		}
 		if(b.status ==3){		
-			block2D[b.i-1	][b.j+1	]=b.type;
-			block2D[b.i-1	][b.j	]=b.type;
-			block2D[b.i	][b.j	]	 =b.type;
-			block2D[b.i+1	][b.j	]=b.type;
+			block2D[b.i-1	][b.j-1	] = b.type;
+			block2D[b.i-1	][b.j	] = b.type;
+			block2D[b.i		][b.j	] = b.type;
+			block2D[b.i+1	][b.j	] = b.type;
 		}
 		if(b.status ==4){		
-			block2D[b.i	][b.j-1	]=b.type;
-			block2D[b.i	][b.j	]=b.type;
-			block2D[b.i	][b.j+1	]=b.type;
-			block2D[b.i+1	][b.j+1	]=b.type;
+			block2D[b.i		][b.j-1	] = b.type;
+			block2D[b.i		][b.j	] = b.type;
+			block2D[b.i		][b.j+1	] = b.type;
+			block2D[b.i+1	][b.j-1	] = b.type;
+		}
+	}
+	//6번도형
+	if(b.type ==6){
+		if(b.status ==1){		
+			block2D[b.i-1	][b.j-1	] = b.type;
+			block2D[b.i-1	][b.j	] = b.type;
+			block2D[b.i		][b.j	] = b.type;
+			block2D[b.i+1	][b.j	] = b.type;
+		}
+		if(b.status ==2){		
+			block2D[b.i		][b.j-1	] = b.type;
+			block2D[b.i		][b.j	] = b.type;
+			block2D[b.i		][b.j+1	] = b.type;
+			block2D[b.i+1	][b.j-1	] = b.type;
+		}
+		if(b.status ==3){		
+			block2D[b.i-1	][b.j	] = b.type;
+			block2D[b.i		][b.j	] = b.type;
+			block2D[b.i+1	][b.j	] = b.type;
+			block2D[b.i+1	][b.j+1	] = b.type;
+		}
+		if(b.status ==4){		
+			block2D[b.i-1	][b.j+1	] = b.type;
+			block2D[b.i		][b.j-1	] = b.type;
+			block2D[b.i		][b.j	] = b.type;
+			block2D[b.i		][b.j+1	] = b.type;
 		}
 		
 	}
-	//법규	
-	if(b.type ==7){
-		if(b.status ==1){
-			block2D[b.i-1	][b.j	]=b.type;
-			block2D[b.i	][b.j	]=b.type;
-			block2D[b.i	][b.j-1	]=b.type;
-			block2D[b.i	][b.j+1	]=b.type;
+	
+	
+	
+	if(b.type == 7){
+		if(b.status == 1){
+			block2D[b.i-1	][b.j	] = b.type;
+			block2D[b.i		][b.j	] = b.type;
+			block2D[b.i		][b.j-1	] = b.type;
+			block2D[b.i		][b.j+1	] = b.type;
 		}
-		if(b.status ==2){
-			block2D[b.i-1][b.j]=b.type;
-			block2D[b.i][b.j]  =b.type;
-			block2D[b.i+1][b.j]=b.type;
-			block2D[b.i][b.j+1]=b.type;
+		if(b.status == 2){
+			block2D[b.i-1	][b.j	] = b.type;
+			block2D[b.i		][b.j	] = b.type;
+			block2D[b.i+1	][b.j	] = b.type;
+			block2D[b.i		][b.j+1	] = b.type;
+		}		
+		if(b.status == 3){
+			block2D[b.i		][b.j-1	] = b.type;
+			block2D[b.i		][b.j	] = b.type;
+			block2D[b.i		][b.j+1	] = b.type;
+			block2D[b.i+1	][b.j	] = b.type;
 		}
-		if(b.status ==3){
-			block2D[b.i  ][b.j-1] =b.type;
-			block2D[b.i  ][b.j	] =b.type;
-			block2D[b.i  ][b.j+1] =b.type;
-			block2D[b.i+1][b.j	] =b.type;
+		if(b.status == 4){
+			block2D[b.i		][b.j-1	] = b.type;
+			block2D[b.i		][b.j	] = b.type;
+			block2D[b.i-1	][b.j	] = b.type;
+			block2D[b.i+1	][b.j	] = b.type;
 		}
-		if(b.status ==4){
-			block2D[b.i	 ][b.j-1]	=b.type;
-			block2D[b.i	 ][b.j  ]	=b.type;
-			block2D[b.i-1][b.j  ]	=b.type;
-			block2D[b.i+1][b.j  ]	=b.type;
-		}
-	}
+	}	
+	
 }
+
 function setScrin2D(){
 	for(var i=0;i<25;i++){
 		for(var j=0;j<10;j++){
@@ -268,546 +267,630 @@ function setScrin2D(){
 		}
 	}
 	
-	for(var i = 0; i<25; i++){
-		for(var j = 0; j<10; j++){
+	for(var i=0;i<25;i++){
+		for(var j=0;j<10;j++){
 			if(block2D[i][j]>0){
 				scrin2D[i][j] = block2D[i][j];
 			}
 		}
 	}
-	for(var i = 0; i<25; i++){
-		for(var j = 0; j<10; j++){
+	
+	for(var i=0;i<25;i++){
+		for(var j=0;j<10;j++){
 			if(stack2D[i][j]>0){
-				scrin2D[i][j] = stack2D[i][j]
+				scrin2D[i][j] = stack2D[i][j];
 			}
 		}
-	}
-} 
+	}	
+}
 function myrender(){
-	var tds = document.querySelectorAll(".mydisp");
-	for(var i = 0; i<25; i++){
-		for(var j = 0; j<10; j++){
-			var idx = parseInt(i*10 + j);
-			if(scrin2D[i][j]== 0){
-				tds[idx].style.backgroundColor = "white";
-			}
-			if(scrin2D[i][j]== 1){
-				tds[idx].style.backgroundColor = "red";
-			}
-			if(scrin2D[i][j]== 2){
-				tds[idx].style.backgroundColor = "orange";
-			}
-			if(scrin2D[i][j]== 3){
-				tds[idx].style.backgroundColor = "green";
-			}
-			if(scrin2D[i][j]== 4){
-				tds[idx].style.backgroundColor = "blue";
-			}
-			if(scrin2D[i][j]== 5){
-				tds[idx].style.backgroundColor = "purple";
-			}
-			if(scrin2D[i][j]== 6){
-				tds[idx].style.backgroundColor = "pink";
-			}
-			if(scrin2D[i][j]== 7){
-				tds[idx].style.backgroundColor = "yellow";
-			}
-			if(scrin2D[i][j]== 11){
-				tds[idx].style.backgroundColor = "lightRed";
-			}
-			if(scrin2D[i][j]== 12){
-				tds[idx].style.backgroundColor = "lightOrange";
-			}
-			if(scrin2D[i][j]== 13){
-				tds[idx].style.backgroundColor = "lightGreen";
-			}
-			if(scrin2D[i][j]== 14){
-				tds[idx].style.backgroundColor = "lightBlue";
-			}
-			if(scrin2D[i][j]== 15){
-				tds[idx].style.backgroundColor = "lightPurple";
-			}
-			if(scrin2D[i][j]== 16){
-				tds[idx].style.backgroundColor = "lightPink";
-			}
-			if(scrin2D[i][j]== 17){
-				tds[idx].style.backgroundColor = "lightYellow";
+	var tds  = document.querySelectorAll(".mydisp");
+	for(var i=0;i<25;i++){
+		for(var j=0;j<10;j++){
+			if (scrin2D[i][j] == 0){
+				tds[i*10+j].style.backgroundColor = "white";
 			}
 			
+			if (scrin2D[i][j] == 1){
+				tds[i*10+j].style.backgroundColor = "lightblue";
+			}
+			if (scrin2D[i][j] == 2){
+				tds[i*10+j].style.backgroundColor = "orange";
+			}
+			if (scrin2D[i][j] == 3){
+				tds[i*10+j].style.backgroundColor = "yellow";
+			}
+			if (scrin2D[i][j] == 4){
+				tds[i*10+j].style.backgroundColor = "red";
+			}
+			if (scrin2D[i][j] == 5){
+				tds[i*10+j].style.backgroundColor = "purple";
+			}
+			if (scrin2D[i][j] == 6){
+				tds[i*10+j].style.backgroundColor = "pink";
+			}
+			if (scrin2D[i][j] == 7){
+				tds[i*10+j].style.backgroundColor = "lime";
+			}
+			
+			if (scrin2D[i][j] == 11){
+				tds[i*10+j].style.backgroundColor = "#D4F4FA";
+			}
+			if (scrin2D[i][j] == 12){
+				tds[i*10+j].style.backgroundColor = "#D4F4FA";
+			}
+			if (scrin2D[i][j] == 13){
+				tds[i*10+j].style.backgroundColor = "#FAED7D";
+			}
+			if (scrin2D[i][j] == 14){
+				tds[i*10+j].style.backgroundColor = "#FAED7D";
+			}
+			if (scrin2D[i][j] == 15){
+				tds[i*10+j].style.backgroundColor = "#D1B2FF";
+			}
+			if (scrin2D[i][j] == 16){
+				tds[i*10+j].style.backgroundColor = "#FFD9FA";
+			}
+			if (scrin2D[i][j] == 17){
+				tds[i*10+j].style.backgroundColor = "#CEF279";
+			}
+
 		}
 	}
-	
 }
-window.addEventListener("keydown", (e) =>{
+
+window.addEventListener("keydown", (e) => 
+{
 	myclick(e);
-});
+}
+);
+
 
 function isCrushWall(){
 	var cnt = 0;
-	var flag = false;
-	for(var i = 0; i<25; i++){
-		for(var j = 0; j<10; j++){
-			if(block2D[i][j]> 0){
+	for(var i=0;i<25;i++){
+		for(var j=0;j<10;j++){
+			if(block2D[i][j]>0){
 				cnt++;
 			}
 		}
 	}
-	if(cnt ==4)
-		flag = false;
-	else
-		flag = true;
-	
-	return flag;
+	if(cnt== 4){
+		return false;
+	}else{
+		return true;
+	}
 }
 function isCrushStack(){
-	var flag = false;
-	
-	for(var i = 0; i<25; i++){
-		for(var j = 0; j<10; j++){
-			if(block2D[i][j] >0 && stack2D[i][j]>0){
-				flag = true;
+	for(var i=0;i<25;i++){
+		for(var j=0;j<10;j++){
+			if(block2D[i][j]>0 && stack2D[i][j]>0){
+				return true;
 			}
-			
-			
 		}
 	}
-	return flag; 
+	return false;
 }
 function moveBlock2DToStack2D(){
-	for(var i = 0; i<25; i++){
-		for(var j = 0; j<10; j++){
-			if(block2D[i][j] >0){
-				stack2D[i][j] = block2D[i][j]+10;
-			}			
+	for(var i=0;i<25;i++){
+		for(var j=0;j<10;j++){
+			if(block2D[i][j]>0){
+				stack2D[i][j]= block2D[i][j]+10;
+			}
 		}
 	}
 }
 
 function myclick(e){
-	if(!flagIng)
+	console.log(e);
+	if(!flagIng){
 		return;
+	}
 	
-	var bakType = b.type;
-	var bakStatus = b.status
-	var bakI = b.i;
-	var bakJ = b.j;
+	var bakType		= b.type;
+	var bakStatus	= b.status;
+	var bakI		= b.i;
+	var bakJ		= b.j;
+	
 	var flagDown = false;
-	if(e.code =="ArrowUp"){
+	if(e.code == "ArrowUp"){
 		changeStatus();
 	}
-	if(e.code =="ArrowDown"){
+	if(e.code == "ArrowDown"){
 		b.i++;
 		flagDown = true;
 	}
-	if(e.code =="ArrowLeft"){
+	if(e.code == "ArrowLeft"){
 		b.j--;
 	}
-	if(e.code =="ArrowRight"){
+	if(e.code == "ArrowRight"){
 		b.j++;
-	}
+	}	
 	
 	var flagUnder = false;
+	
 	try {
 		setBlock2DFromBlock();
-	} catch (e) {
+	} catch (error) {
 		flagUnder = true;
 	}
-	
+				
 	setScrin2D();
+	
 	var flagWall = isCrushWall();
 	var flagStack = isCrushStack();
 	
-	var flagCrush = flagWall || flagStack ||flagUnder;
+	var flagCrush = flagWall || flagStack || flagUnder;
 	
 	if(flagCrush){
-		b.type = bakType;
-		b.status = bakStatus
-		b.i = bakI
-		b.j = bakJ
+		b.type		= bakType;
+		b.status	= bakStatus;
+		b.i			= bakI;
+		b.j			= bakJ;
 		setBlock2DFromBlock();
 		setScrin2D();
+
 	}
 	if(flagCrush && flagDown){
-		moveBlock2DToStack2D();
-		
+		moveBlock2DToStack2D();		
 		if(
-			stack2D[4][0]>0 ||		
-			stack2D[4][1]>0 ||		
-			stack2D[4][2]>0 ||		
-			stack2D[4][3]>0 ||		
-			stack2D[4][4]>0 ||		
-			stack2D[4][5]>0 ||		
-			stack2D[4][6]>0 ||		
-			stack2D[4][7]>0 ||		
-			stack2D[4][8]>0 ||		
-			stack2D[4][9]>0 		
+			stack2D[5][0]>0 ||	
+			stack2D[5][1]>0 ||	
+			stack2D[5][2]>0 ||	
+			stack2D[5][3]>0 ||	
+			stack2D[5][4]>0 ||	
+			
+			stack2D[5][5]>0 ||	
+			stack2D[5][6]>0 ||	
+			stack2D[5][7]>0 ||	
+			stack2D[5][8]>0 ||	
+			stack2D[5][9]>0 	
 		){
-			alert("게임에서 졌습니다.")
-			flagIng = false;
+			alert("게임에서 졌습니다.");
+			fn_loose();
+			flagIng= false;
 		}
 		
 		var cnt10 = getCnt10();
+		
 		var obj = document.querySelector("#my_mission");
 		var int_mission = parseInt(obj.innerText);
 		int_mission = int_mission - cnt10;
-		obj.innerText = int_mission; 
-		if(int_mission <1 ){
-			alert("승리");
-			flagIng = false;
+		obj.innerText = int_mission;
+		if(int_mission<1){
+			alert("게임에서 이겼습니다.");
+			fn_win();
+			flagIng= false;
 		}
-		
-		console.log("cnt10",cnt10)
-		
-// 		count(cnt10);내가 만든 소스;
 		
 		remove10(cnt10);
 		console.log("cnt10",cnt10);
-		b.type		= parseInt(Math.random()*7+1);
+		
+		b.type		= parseInt(Math.random()*7)+1;
 // 		b.type		= 1;
-		b.status 	= 1;
-		b.i 		= 2;
-		b.j 		= 2;
+		b.status	= 1;
+		b.i			= 2;
+		b.j			= 2;
 		setBlock2DFromBlock();
 		setScrin2D();
-	
 	}
+	
 	fn_myscreen();
 	myrender();
-	
+	console.log("stack2D",stack2D);
 }
-function count(cnt10){
-	var count = document.querySelector("#mydiv");
-		var mission = parseInt(count.textContent);
-	console.log("mission",mission)	
-	if(cnt10 >0){
-		mission--;
-		count.textContent = mission;
-	}
-	if(mission ==0){
-		count.textContent = 0;
-		alert("승리!!!!")
-	}
-	
-}
+
+
+
 function remove10(cnt10){
 	var s2D = [];
-	for(var i = 0; i<25; i++){
+	for(var i=0;i<25;i++){
 		if(
-			stack2D[i][0] >0 &&
-			stack2D[i][1] >0 &&
-			stack2D[i][2] >0 &&
-			stack2D[i][3] >0 &&
-			stack2D[i][4] >0 &&
-			stack2D[i][5] >0 &&
-			stack2D[i][6] >0 &&
-			stack2D[i][7] >0 &&
-			stack2D[i][8] >0 &&
-			stack2D[i][9] >0
+			stack2D[i][0]>0 &&	
+			stack2D[i][1]>0 &&	
+			stack2D[i][2]>0 &&	
+			stack2D[i][3]>0 &&	
+			stack2D[i][4]>0 &&	
+			
+			stack2D[i][5]>0 &&	
+			stack2D[i][6]>0 &&	
+			stack2D[i][7]>0 &&	
+			stack2D[i][8]>0 &&	
+			stack2D[i][9]>0 	
 		){
+			//pass
 		}else{
 			s2D.push(stack2D[i]+"");
 		}
 	}
-	for(var i = 0; i<cnt10; i++){
-		s2D.unshift([0,0,0,0,0  ,0,0,0,0,0]+"");
+	
+	for(var i=0;i<cnt10;i++){
+		s2D.unshift([0,0,0,0,0,	0,0,0,0,0]+"");
 	}
-	for(var i=0; i<25;i++){
-		stack2D[i][0] = parseInt(s2D[i].split(",")[0]);
-		stack2D[i][1] = parseInt(s2D[i].split(",")[1]);
-		stack2D[i][2] = parseInt(s2D[i].split(",")[2]);
-		stack2D[i][3] = parseInt(s2D[i].split(",")[3]);
-		stack2D[i][4] = parseInt(s2D[i].split(",")[4]);
-		stack2D[i][5] = parseInt(s2D[i].split(",")[5]);
+	
+	for(var i=0;i<25;i++){
+		stack2D[i][0]= parseInt(s2D[i].split(",")[0]);
+		stack2D[i][1]= parseInt(s2D[i].split(",")[1]);
+		stack2D[i][2]= parseInt(s2D[i].split(",")[2]);
+		stack2D[i][3]= parseInt(s2D[i].split(",")[3]);
+		stack2D[i][4]= parseInt(s2D[i].split(",")[4]);
 		
-		stack2D[i][6] = parseInt(s2D[i].split(",")[6]);
-		stack2D[i][7] = parseInt(s2D[i].split(",")[7]);
-		stack2D[i][8] = parseInt(s2D[i].split(",")[8]);
-		stack2D[i][9] = parseInt(s2D[i].split(",")[9]);
+		stack2D[i][5]= parseInt(s2D[i].split(",")[5]);
+		stack2D[i][6]= parseInt(s2D[i].split(",")[6]);
+		stack2D[i][7]= parseInt(s2D[i].split(",")[7]);
+		stack2D[i][8]= parseInt(s2D[i].split(",")[8]);
+		stack2D[i][9]= parseInt(s2D[i].split(",")[9]);
 	}
+	
 	console.log("s2D",s2D);
+	
 }
+
 function getCnt10(){
 	var cnt = 0;
-	for(var i = 0; i<25; i++){
-		if(stack2D[i][0]>0 &&
-		   stack2D[i][1]>0 &&
-		   stack2D[i][2]>0 &&
-		   stack2D[i][3]>0 &&
-		   stack2D[i][4]>0 &&
-		   stack2D[i][5]>0 &&
-		   stack2D[i][6]>0 &&
-		   stack2D[i][7]>0 &&
-		   stack2D[i][8]>0 &&
-		   stack2D[i][9]>0
+	for(var i=0;i<25;i++){
+		if(
+			stack2D[i][0]>0 &&	
+			stack2D[i][1]>0 &&	
+			stack2D[i][2]>0 &&	
+			stack2D[i][3]>0 &&	
+			stack2D[i][4]>0 &&	
+			
+			stack2D[i][5]>0 &&	
+			stack2D[i][6]>0 &&	
+			stack2D[i][7]>0 &&	
+			stack2D[i][8]>0 &&	
+			stack2D[i][9]>0 	
 		){
 			cnt++;
 		}
 	}
-	
 	return cnt;
 }
+
 function changeStatus(){
-	if(b.type ==2 || b.type == 3 || b.type == 4){
+	if(b.type == 2 || b.type == 3 ||b.type == 4){
 		if(b.status == 1){
-			b.status =2;
-		}else if(b.status ==2){
+			b.status = 2;
+		}else if(b.status == 2){
 			b.status = 1;
 		}
 	}
-	if(b.type ==5 || b.type == 6 || b.type == 7){
+	if(b.type == 5 || b.type == 6 ||b.type == 7){
 		if(b.status == 1){
-			b.status =2;
-		}else if(b.status ==2){
+			b.status = 2;
+		}else if(b.status == 2){
 			b.status = 3;
 		}else if(b.status == 3){
-			b.status =4;
-		}else if(b.status ==4){
+			b.status = 4;
+		}else if(b.status == 4){
 			b.status = 1;
 		}
 	}
 	
-	
-}
-function myinit(){
-	setBlock2DFromBlock();//블록을 설정
-	setScrin2D();
-	myrender();
-	mytime();
 }
 function mytime(){
-	myclick({'code':'ArrowDown'});
-	setTimeout(mytime, 500)
-
+ 	myclick({code:'ArrowDown'});
+ 	var speed = parseInt(Math.random()*1900)+100;
+	setTimeout(mytime,speed);
 }
+
+function myinit(){
+	mytime();
+}
+
 
 </script>
 </head>
 <body onload="myinit()">
-<table border = "1px">
-	<tr>
-		<td style="width:280px;">
-<input style="width: 50px"type="text" id ="my_id">
-<input type="button"value="참가" onclick="fn_login()">
-<input type="button"value="게임시작" onclick="fn_start()"><br/>
-Mission:<div id="my_mission">10</div>
-다음 블록이 나올때 10이 줄어든다.
-<table border="1px">
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-	<tr>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-		<td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td><td class ="mydisp"></td>
-	</tr>
-</table>
 
-	</td>
-	<td>
 <table border="1px">
 	<tr>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
+		<td style="width: 280px;">
+<input style="width: 50px" type="text" id="my_id" >	
+<input type="button" value="참가" onclick="fn_login()" >	
+<input type="button" value="게임시작" onclick="fn_start()" >	<br/>		
+		
+Mission:<div id="my_mission">2</div>	
+<table border="1px">
+	<tr>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
 	</tr>
 	<tr>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
 	</tr>
 	<tr>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
 	</tr>
 	<tr>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
 	</tr>
 	<tr>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
 	</tr>
-	<tr>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-	</tr>
-	<tr>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-		<td style="width: 50px"><div class="user_id"/><div class ="user_mission"/></td>
-	</tr>
-	<tr>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-		<td style="width: 50px"><canvas style="width: 50px; height: 125px;"  class ="user_can"/></td>
-	</tr>
-</table>
-		</td>
+
 	
+	<tr>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
 	</tr>
+	<tr>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+	</tr>
+	<tr>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+	</tr>
+	<tr>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+	</tr>
+	<tr>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+	</tr>
+	
+	<tr>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+	</tr>
+	<tr>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+	</tr>
+	<tr>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+	</tr>
+	<tr>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+	</tr>
+	<tr>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+	</tr>
+	
+	<tr>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+	</tr>
+	<tr>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+	</tr>
+	<tr>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+	</tr>
+	<tr>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+	</tr>
+	<tr>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+	</tr>
+	
+	<tr>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+	</tr>
+	<tr>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+	</tr>
+	<tr>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+	</tr>
+	<tr>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+	</tr>
+	<tr>
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+		<td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" /><td class="mydisp" />
+	</tr>	
+	
+
 </table>
 
-</body>
-</html>
+		
+		
+		</td>
+		<td>
+		
+<table border="1px" style="font-size: 7px;" >
+	<tr>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+
+	</tr>
+	<tr>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+	</tr>
+	
+	<tr>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+	</tr>
+	<tr>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+	</tr>
+	
+	<tr>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+	</tr>
+	<tr>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+	</tr>
+	
+	<tr>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+		<td style="width: 50px" ><span class="user_id" ></span> <span class="user_mission" ></span></td>
+	</tr>
+	<tr>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+		<td style="width: 50px" ><canvas style="width: 50px;height: 125px" class="user_can" ></canvas></td>
+	</tr>
+	
+</table>
+		
+		
+		
+		</td>
+		
+	</tr>
+</table>
 
 {{ room_name|json_script:"room-name" }}
 <script>
 const roomName = JSON.parse(document.getElementById('room-name').textContent);
-var ws_url = 'ws://'+ window.location.host + '/ws/chat/' + roomName + '/';
-console.log("ws_url", ws_url);
+var ws_url = 'ws://' + window.location.host + '/ws/chat/' + roomName  + '/';
+console.log("ws_url",ws_url);
 const chatSocket = new WebSocket(ws_url);
 
 chatSocket.onclose = function(e) {
-    console.error('Chat socket closed unexpectedly');
+	console.error('Chat socket closed unexpectedly');
 };
-
 chatSocket.onmessage = function(e) {
 	const data = JSON.parse(e.data);
-    console.log(data)
-    var message = data.message;
-    var arr_msg = message.split(":");
-    
-    if(arr_msg[0]=="login"){
-		rev_login(arr_msg[1]);    	
-    }
-    if(arr_msg[0]=="start"){
-    	rev_start();
-    }
-    if(arr_msg[0]=="myscreen"){
-    	rev_myscreen(arr_msg[1], arr_msg[2] ,arr_msg[3]);
-    }
+	var message = data.message;
+	var arr_msg = message.split(":");
+	
+	if(arr_msg[0]=="login"){
+		rev_login(arr_msg[1]);
+	}
+	if(arr_msg[0]=="start"){
+		rev_start();
+	}
+	if(arr_msg[0]=="myscreen"){
+		rev_myscreen(arr_msg[1],arr_msg[2],arr_msg[3]);
+	}
+	if(arr_msg[0]=="win"){
+		rev_win(arr_msg[1]);
+	}
+	if(arr_msg[0]=="loose"){
+		rev_loose(arr_msg[1]);
+	}	
+	
 };
-function rev_myscreen(my_id,screen_info,mission_info){
-	console.log(my_id,screen_info,mission_info)
+
+
+function rev_loose(my_id){
+	var idx_dupl = -1;
+	for(var i=0;i<user_ids.length;i++){
+		if(user_ids[i]==my_id){
+			console.log(user_ids[i],my_id);
+			idx_dupl = i;
+			break;
+		}
+	}
+	
+	var objs = document.querySelectorAll(".user_id");
+	objs[idx_dupl].style.backgroundColor = "red";
 }
+
+function rev_win(winner_id){
+	alert(winner_id+"가 이겼습니다.");
+	flagIng = false;
+	
+}
+
+function rev_myscreen(my_id,screen_info,mission_info){
+	var idx_dupl = -1;
+	for(var i=0;i<user_ids.length;i++){
+		if(user_ids[i]==my_id){
+			console.log(user_ids[i],my_id);
+			idx_dupl = i;
+			break;
+		}
+	}
+	var objs_mission = document.querySelectorAll(".user_mission");
+	objs_mission[idx_dupl].innerHTML = mission_info;
+	
+	var objs_can = document.querySelectorAll(".user_can");
+	var arr_screen = screen_info.split(",");
+	
+	console.log("objs_can",objs_can);
+    for(var i=0;i<25;i++){
+    	for(var j=0;j<10;j++){
+    		var ctx = objs_can[idx_dupl].getContext('2d');
+    		
+			if (arr_screen[i*10+j] == '0')	ctx.fillStyle = 'white';
+			
+			if (arr_screen[i*10+j] == '1')	ctx.fillStyle = 'lightblue';
+			if (arr_screen[i*10+j] == '2')	ctx.fillStyle = 'orange';
+			if (arr_screen[i*10+j] == '3')	ctx.fillStyle = 'yellow';
+			if (arr_screen[i*10+j] == '4')	ctx.fillStyle = 'red';
+			if (arr_screen[i*10+j] == '5')	ctx.fillStyle = 'purple';
+			if (arr_screen[i*10+j] == '6')	ctx.fillStyle = 'pink';
+			if (arr_screen[i*10+j] == '7')	ctx.fillStyle = 'lime';
+			
+			if (arr_screen[i*10+j] == '11')	ctx.fillStyle = '#D4F4FA';
+			if (arr_screen[i*10+j] == '12')	ctx.fillStyle = '#D4F4FA';
+			if (arr_screen[i*10+j] == '13')	ctx.fillStyle = '#FAED7D';
+			if (arr_screen[i*10+j] == '14')	ctx.fillStyle = '#FAED7D';
+			if (arr_screen[i*10+j] == '15')	ctx.fillStyle = '#D1B2FF';
+			if (arr_screen[i*10+j] == '16')	ctx.fillStyle = '#FFD9FA';
+			if (arr_screen[i*10+j] == '17')	ctx.fillStyle = '#CEF279';
+
+			ctx.fillRect(j*30, i*6, 29, 5);
+    	}	
+    }
+}
+
 function rev_start(){
 	flagIng = true;
 }
@@ -817,9 +900,8 @@ function rev_login(my_id){
 	console.log("my_id",my_id);
 	
 	var idx_dupl = -1;
-	
-	for(var i = 0; i<user_ids.length; i++){
-		if(user_ids[i] ==my_id){
+	for(var i=0;i<user_ids.length;i++){
+		if(user_ids[i]==my_id){
 			idx_dupl = i;
 			break;
 		}
@@ -829,49 +911,53 @@ function rev_login(my_id){
 	}
 	
 	
-	
 	var objs = document.querySelectorAll(".user_id");
-	
-	for(var i = 0; i<user_ids.length;i++ ){
+	for(var i=0;i<user_ids.length;i++){
 		objs[i].innerHTML = user_ids[i]
 	}
-			
-	objs[u_idx].innerHTML = my_id;
+	
+		
+
 }
 
 function mysend(message){
-	var json={
-			'message' : message
+	var json = {
+			'message': message
 	}
 	chatSocket.send(JSON.stringify(json));
-	
 }
+
 function fn_myscreen(){
 	var obj = document.querySelector("#my_id");
 	var obj_mission = document.querySelector("#my_mission");
 	var message = "myscreen:"+obj.value+":"+scrin2D+":"+obj_mission.innerHTML;
 	console.log("fn_myscreen",message);
 	mysend(message);
-	
-	
-}
-function fn_login(){
-	var obj = document.querySelector("#my_id");
-	var message ="login:"+ obj.value;
-	mysend(message);
 }
 
 function fn_win(){
 	var obj = document.querySelector("#my_id");
-	var message ="win:"+ obj.value;
+	var message = "win:"+obj.value;
+	mysend(message);
+}
+function fn_login(){
+	var obj = document.querySelector("#my_id");
+	var message = "login:"+obj.value;
+	mysend(message);
+}
+function fn_start(){
+	var message = "start";
+	mysend(message);
+}
+function fn_loose(){
+	var obj = document.querySelector("#my_id");
+	var message = "loose:"+obj.value;
 	mysend(message);
 }
 
-function fn_start(){
-	var message ="start";
-	mysend(message);
-}
-function players_board(){
-	--------------------------------------
-}
+
 </script>
+
+
+</body>
+</html>
